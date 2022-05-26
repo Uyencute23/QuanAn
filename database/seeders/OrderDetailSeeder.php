@@ -30,7 +30,7 @@ class OrderDetailSeeder extends Seeder
            OrderDetail::create([
                 'order_id' => $order_detail[0],
                 'product_id' => $order_detail[1],
-                'quanlity' => $order_detail[2],
+                'quantity' => $order_detail[2],
                 'total' => $order_detail[3]
                 
             ]);

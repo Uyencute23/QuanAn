@@ -41,7 +41,7 @@
                                             {{ number_format($prod->price, 0, ',', '.') }}đ
 
                                         </h6>
-                                        <a href="{{route('cart-details', ['proID' => $prod->id])}}">
+                                        <a href="#">
                                             <i class="fa fa-shopping-cart" style="color: white" aria-hidden="true"></i>
                                         </a>
                                     </div>

@@ -64,6 +64,7 @@
     <!-- End Google Map -->
 
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

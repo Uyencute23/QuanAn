@@ -43,6 +43,6 @@ Route::get('/product-detail/{id}', [ProductController::class,'show'])->name('pro
 Route::get('/promo', [PromotionController::class,'index'])->name('promo');
 
 Route::get('/cart', [CartController::class,'index'])->name('cart');
-
-Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
+Route::post('/addproduct', [CartDetailController::class,'store'])->name('product.add');
+// Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
 require __DIR__.'/auth.php';

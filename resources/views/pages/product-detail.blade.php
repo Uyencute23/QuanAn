@@ -19,10 +19,10 @@
                                         <span class="glyphicon glyphicon-minus">-</span>
                                     </button>
                                 </span>
-                                <input type="text" name="quant[1]" class="form-control input-number"
+                                <input type="text" id="quantity" name="quant[1]" class="form-control input-number"
                                     style="max-width: 45px;text-align: center;" value="1" min="1" max="100">
                                 <span>
-                                    <button type="button" class="btn btn-danger btn-number"
+                                    <button type="button"  class="btn btn-danger btn-number"
                                         style="border-bottom-left-radius: 0px; border-top-left-radius: 0px" data-type="plus"
                                         data-field="quant[1]">
                                         <span class="glyphicon glyphicon-plus">+</span>
@@ -32,10 +32,35 @@
                         </div>
 
                     </div>
-                    <button class="add-cart"> <b>Thêm vào giỏ hàng </b></button>
+                    <button class="add-cart" onclick="addProduct()"> <b>Thêm vào giỏ hàng </b></button>
                 </div>
             </div>
             <hr>
         </div>
+        @push('scripts')
+            <script>
+                function addProduct() {
+                    if ($('#quantity').val() > 0) {
+                        
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('product.add') }}',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                product_id: '{{ $product->id }}',
+                                quantity: $('#quantity').val()
+                            },
+                            success: function(data) {
+                                if(data.success)
+                                {
+                                    alert('Thêm thành công')
+                                }
+                                console.log(data)
+                            }
+                        });
+                    }
+                }
+            </script>
+        @endpush
     @endif
 @endsection

@@ -106,7 +106,7 @@
                     <div class="tab-content">
                         <div id="login-form" aria-labelledby="controlled-tab-tab-login" role="tabpanel"
                             aria-hidden="false" class="fade tab-pane active show">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form id="login" action="" >
                                 @csrf
                                 <div class="form-group">
                                     <label>Email</label>
@@ -198,10 +198,33 @@
                 </div>
                 <div class="right-content">
                     <div style="background-color: rgb(255, 170, 64); height: 100%;">
-                        <img alt="" src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg" style="width: 100%;" />
+                        <img alt="" src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
+                            style="width: 100%;" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', '#login', function() { 
+                // alert('hihi')
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{route('login')}}',
+                        data: $('#login').serialize(),
+                        success: function(data) {
+                            // if (data.success) {      
+                            // }
+                            console.log(data)
+                        },
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+@endpush

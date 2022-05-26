@@ -19,7 +19,7 @@ return new class extends Migration
             AFTER INSERT ON customers
             FOR EACH ROW 
             BEGIN
-                INSERT INTO carts (customer_id, quanlity, total) VALUES(NEW.id, "0", "0");
+                INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
             END'
         );
     }

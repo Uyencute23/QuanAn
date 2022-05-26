@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -19,7 +20,9 @@ class CartController extends Controller
     {
         //
         $data=[
-            'active'=>0
+            'active'=>0,
+            'detais' => Auth::user()->customer->cart->cartDetails,
+            'cart' => Auth::user()->customer->cart
         ];
         return view('pages.cart',$data);
     }

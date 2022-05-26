@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('cart_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->integer('quanlity');
+            $table->integer('quantity');
             $table->float('total');
             $table->timestamps();
            

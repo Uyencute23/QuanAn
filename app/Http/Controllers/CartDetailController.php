@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\CartDetail;
 use App\Http\Requests\StoreCartDetailRequest;
 use App\Http\Requests\UpdateCartDetailRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class CartDetailController extends Controller
 {
@@ -29,23 +31,34 @@ class CartDetailController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCartDetailRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCartDetailRequest $request, $proID)
-    {dd("Create");
-        $product = CartDetail::create([
-            'cart_id' => 1,
-            'product_id'=> $proID,
-            'quanlity'=>1,
-            'total'=>35000.00 
-        ]);
+    public function store(Request $request)
+    {
+       
+        // if ($request->ajax()) {
+            $request->validate([
+                'product_id' => ['required'],
+                'quantity' => ['required'],
+            ]);
+            $sp = Product::find($request->product_id);
+            $current = CartDetail::where('cart_id', "=", Auth::user()->id)->where('product_id', '=', $request->product_id)->first();
 
-    
-       return back(); 
+            if ($current == null) {
+                $cartdetail = new CartDetail();
+                $cartdetail->cart_id = Auth::user()->customer->cart->id;
+                $cartdetail->product_id = $request->product_id;
+                $cartdetail->quantity = $request->quantity;
+                $cartdetail->total = $sp->price * $request->quantity;
+                if ($cartdetail->save())
+                    return response()->json(['success'=> $cartdetail], 200);
+            } else {
+                $current->total =  $current->total + $sp->promo_price * $request->quantity;
+                $current->quantity = $current->quantity + $request->quantity;
+                if ($current->save())
+                    return response()->json(['success'=> $current], 200);
+            }
+
+            return response()->json(['fail' => 'không thành công,sản phẩm đã có trong giỏ']);
+        // }
     }
 
     /**

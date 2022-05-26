@@ -14,4 +14,8 @@ class Customer extends Model
         'address',
         'img'
     ];
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, 'customer_id');
+    }
 }
