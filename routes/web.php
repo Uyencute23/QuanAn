@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/login', function () {
 //     return view('pages.login');
 // })->name('login');
@@ -28,21 +28,45 @@ Route::get('/signup', function () {
     return view('pages.signup');
 })->name('signup');
 
-Route::get('/menu',[MenuController::class,'index'])->name('menu');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/about', function () {
-    return view('pages.about',['active'=>2]);
+    return view('pages.about', ['active' => 2]);
 })->name('about');
 
 Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
 })->name('admin/dashboard');
 
-Route::get('/product-detail/{id}', [ProductController::class,'show'])->name('product-detail');
+Route::get('/admin/signin', function () {
+    return view('pages.admin.sign-in');
+})->name('admin/signin');
 
-Route::get('/promo', [PromotionController::class,'index'])->name('promo');
+Route::get('/admin/profile', function () {
+    return view('pages.admin.profile');
+})->name('admin/profile');
 
-Route::get('/cart', [CartController::class,'index'])->name('cart');
-Route::post('/addproduct', [CartDetailController::class,'store'])->name('product.add');
+Route::get('/admin/signup', function () {
+    return view('pages.admin.sign-up');
+})->name('admin/signup');
+
+Route::get('/admin/tables', function () {
+    return view('pages.admin.tables');
+})->name('admin/tables');
+
+Route::get('/admin/billing', function () {
+    return view('pages.admin.billing');
+})->name('admin/billing');
+
+Route::get('/admin/virtual-reality', function () {
+    return view('pages.admin.virtual-reality');
+})->name('admin/virtual-reality');
+
+Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('product-detail');
+
+Route::get('/promo', [PromotionController::class, 'index'])->name('promo');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
