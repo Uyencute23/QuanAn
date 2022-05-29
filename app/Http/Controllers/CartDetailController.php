@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class CartDetailController extends Controller
 {
     /**
@@ -33,15 +34,17 @@ class CartDetailController extends Controller
 
     public function store(Request $request)
     {
-       
-        // if ($request->ajax()) {
-            $request->validate([
-                'product_id' => ['required'],
-                'quantity' => ['required'],
-            ]);
-            $sp = Product::find($request->product_id);
-            $current = CartDetail::where('cart_id', "=", Auth::user()->id)->where('product_id', '=', $request->product_id)->first();
 
+        // if ($request->ajax()) {
+        $request->validate([
+            'product_id' => ['required'],
+            'quantity' => ['required'],
+        ]);
+        $sp = Product::find($request->product_id);
+        if ($sp) {
+            $current = CartDetail::where('cart_id', "=", Auth::user()->customer->cart->id)->where('product_id', '=', $sp->id)->first();
+            // dd($current);
+            // return response(['success' => $current,'sp'=>Auth::user()->customer->cart->id], 200);
             if ($current == null) {
                 $cartdetail = new CartDetail();
                 $cartdetail->cart_id = Auth::user()->customer->cart->id;
@@ -49,15 +52,16 @@ class CartDetailController extends Controller
                 $cartdetail->quantity = $request->quantity;
                 $cartdetail->total = $sp->price * $request->quantity;
                 if ($cartdetail->save())
-                    return response()->json(['success'=> $cartdetail], 200);
+                    return response()->json(['success' => $cartdetail], 200);
             } else {
                 $current->total =  $current->total + $sp->promo_price * $request->quantity;
                 $current->quantity = $current->quantity + $request->quantity;
                 if ($current->save())
-                    return response()->json(['success'=> $current], 200);
+                    return response()->json(['success' => $current], 200);
             }
 
             return response()->json(['fail' => 'không thành công,sản phẩm đã có trong giỏ']);
+        }
         // }
     }
 

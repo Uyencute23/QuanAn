@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return response(['success' => 'Đăng ký thành công'], 200);
+        // return redirect(RouteServiceProvider::HOME);
     }
 }

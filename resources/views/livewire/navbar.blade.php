@@ -16,7 +16,7 @@
 
         </div>
     </div>
-    <a href="{{ route('cart') }}" class="user_link">
+    <a @if (!Auth::user()) data-toggle="modal" data-target="#loginModal" @endif href="{{ route('cart') }}" class="user_link">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         <a>
             <form class="form-inline">
