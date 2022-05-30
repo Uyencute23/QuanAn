@@ -1,4 +1,5 @@
 <div class="user_option">
+    
     <div class="dropdown">
         <a @if (!Auth::user()) data-toggle="modal" data-target="#loginModal" @endif data-toggle="dropdown"
             href="" class="user_link">
@@ -24,7 +25,7 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </form>
-            <a href="" class="order_online">
+            {{-- <a href="" class="order_online">
                 Order Online
-            </a>
+            </a> --}}
 </div>

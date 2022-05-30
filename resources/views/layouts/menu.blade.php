@@ -41,7 +41,7 @@
                                             {{ number_format($prod->price, 0, ',', '.') }}đ
 
                                         </h6>
-                                        <a href="#">
+                                        <a onclick="addProduct({{ $prod->id }})">
                                             <i class="fa fa-shopping-cart" style="color: white" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -59,4 +59,27 @@
             </a>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            function addProduct(id) {
+                // console.log('hihi');
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('product.add') }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        product_id: id,
+                        quantity: 1
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            alert('Thêm thành công')
+                        }
+                        console.log(data)
+                    }
+                });
+
+            }
+        </script>
+    @endpush
 </section>

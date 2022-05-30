@@ -44,3 +44,4 @@ Route::get('/cart', [CartController::class, 'index'])->middleware('auth')->name(
 Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';

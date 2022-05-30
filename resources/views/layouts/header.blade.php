@@ -13,7 +13,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav  mx-auto ">
+                <ul class="navbar-nav  ml-2 ">
                     @if ($active == 1)
                        <li class="nav-item active"> 
                     @else
@@ -53,7 +53,7 @@
                     @else
                         <li class="nav-item">
                     @endif
-                        <a class="nav-link" href="book.html">TIN TỨC</a>
+                        <a class="nav-link" href="book.html">TIN TỨC &nbsp;&nbsp;</a>
                     </li>
 
                 </ul>

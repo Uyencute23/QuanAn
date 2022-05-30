@@ -54,7 +54,7 @@ class CartDetailController extends Controller
                 if ($cartdetail->save())
                     return response()->json(['success' => $cartdetail], 200);
             } else {
-                $current->total =  $current->total + $sp->promo_price * $request->quantity;
+                // $current->total =  $current->total + $sp->price * $request->quantity;
                 $current->quantity = $current->quantity + $request->quantity;
                 if ($current->save())
                     return response()->json(['success' => $current], 200);
@@ -99,14 +99,13 @@ class CartDetailController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CartDetail  $cartDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CartDetail $cartDetail)
+  
+    public function destroy($id)
     {
         //
+        $dt = CartDetail::find($id);
+        $dt->delete();
+        return response(['success'=>'delete success','prod_del'=> $dt]);
+
     }
 }

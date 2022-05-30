@@ -17,11 +17,7 @@
                                             có chất lượng tốt, hương vị tuyệt hảo, dịch vụ chu đáo với một mức giá hợp
                                             lý… Hãy đến và thưởng thức nhé!
                                         </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn1">
-                                                Order Now
-                                            </a>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -43,11 +39,7 @@
                                             nhận
                                             quốc tế.
                                         </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn1">
-                                                Order Now
-                                            </a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -68,11 +60,7 @@
                                             ty; từ đó, cùng nhau, chúng tôi phục vụ khách
                                             hàng một cách tốt nhất.
                                         </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn1">
-                                                Order Now
-                                            </a>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>

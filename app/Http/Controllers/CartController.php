@@ -21,8 +21,8 @@ class CartController extends Controller
         //
         $data=[
             'active'=>0,
-            'detais' => Auth::user()->customer->cart->cartDetails,
-            'cart' => Auth::user()->customer->cart
+            // 'detais' => Auth::user()->customer->cart->cartDetails,
+            // 'cart' => Auth::user()->customer->cart
         ];
         return view('pages.cart',$data);
     }

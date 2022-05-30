@@ -20,6 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', [AuthenticatedSessionController::class, 'storea'])->name('login');
-
 Route::post('/addproduct', [CartDetailController::class,'store']);
+Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->name('cartdetail.del');
