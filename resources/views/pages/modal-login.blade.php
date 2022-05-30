@@ -99,9 +99,9 @@
                 <div class="left-content">
                     <nav class="login-nav nav nav-tabs" role="tablist">
                         <a id="controlled-tab-tab-login" data-toggle="tab" href="#login-form" aria-selected="true"
-                            class="nav-item nav-link active">Sign in</a>
+                            class="nav-item nav-link active">ĐĂNG NHẬP</a>
                         <a id="controlled-tab-tab-register" data-toggle="tab" href="#registration-form"
-                            aria-selected="false" class="nav-item nav-link">Sign up</a>
+                            aria-selected="false" class="nav-item nav-link">ĐĂNG KÝ</a>
                     </nav>
                     <div class="tab-content">
                         <div id="login-form" aria-labelledby="controlled-tab-tab-login" role="tabpanel"
@@ -133,7 +133,7 @@
                                 <div class="modal-footer">
                                     <div class="col">
                                         <button class="btn btn-primary btn-block" type="submit" title="Sign in">Đăng nhập</button>
-                                        <button class="btn btn-outline-primary btn-block " type="button">
+                                        {{-- <button class="btn btn-outline-primary btn-block " type="button">
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                             <span>Đăng nhập
                                                 Facebook</span>
@@ -141,7 +141,7 @@
                                         <button class="btn btn-outline-primary btn-block" type="button">
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                             <span>Checkout as guest</span>
-                                        </button>
+                                        </button> --}}
                                     </div>
                                 </div>
                             </form>
@@ -152,7 +152,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Họ và Tên</label><input autocomplete="given-name" class="form-control"
-                                        placeholder="Nhập Họ và Tên" minlength="2" name="name" required>
+                                        placeholder="Nhập họ tên" minlength="2" name="name" required>
 
                                 </div>
                                 <div class="form-group">
@@ -200,7 +200,7 @@
                     </div>
                 </div>
                 <div class="right-content">
-                    <div style="background-color: rgb(255, 170, 64); height: 100%;">
+                    <div style=" height: 100%;">
                         <img alt="" src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
                             style="width: 100%;" />
                     </div>

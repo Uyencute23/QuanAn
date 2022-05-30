@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                Our Menu
+               THỰC ĐƠN
             </h2>
         </div>
 

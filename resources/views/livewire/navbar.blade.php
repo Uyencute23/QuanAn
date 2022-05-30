@@ -14,7 +14,6 @@
                 <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();
                             this.closest('form').submit();">Đăng xuất</a>
             </form>
-
         </div>
     </div>
     <a @if (!Auth::user()) data-toggle="modal" data-target="#loginModal" @endif href="{{ route('cart') }}" class="user_link">
