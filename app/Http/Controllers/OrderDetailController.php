@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\OrderDetail;
 use App\Http\Requests\StoreOrderDetailRequest;
 use App\Http\Requests\UpdateOrderDetailRequest;
+use App\Models\Promotion;
+use Illuminate\Support\Facades\Auth;
 
 class OrderDetailController extends Controller
 {
@@ -15,7 +17,12 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $data=[
+            'detais' => Auth::user()->customer->cart->cartDetails,
+            'cart' => Auth::user()->customer->cart,
+            'promo' => Promotion::all()
+        ];
+        return view('pages.checkout',$data);
     }
 
     /**

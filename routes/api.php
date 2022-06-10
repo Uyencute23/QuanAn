@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// Route::post('/updatecart', [CartDetailController::class, 'update'])->name('cartdetail.update');
 Route::post('/addproduct', [CartDetailController::class,'store']);
-Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->name('cartdetail.del');
+// Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->name('cartdetail.del');

@@ -105,7 +105,7 @@
                     </nav>
                     <div class="tab-content">
                         <div id="login-form" aria-labelledby="controlled-tab-tab-login" role="tabpanel"
-                            aria-hidden="false" class="fade tab-pane active show">
+                            aria-hidden="false" class="fade tab-pane active in show">
                             <form id="login" action="" >
                                 @csrf
                                 <div class="form-group">
@@ -160,7 +160,6 @@
                                         placeholder="Nhập email" name="email" required>
 
                                 </div>
-
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
                                     <div class="password-icon">

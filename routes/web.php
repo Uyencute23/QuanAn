@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,12 +36,18 @@ Route::get('/about', function () {
 })->name('about');
 
  
-
 Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('product-detail');
 
 Route::get('/promo', [PromotionController::class, 'index'])->name('promo');
 
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth')->name('cart');
+Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->name('cartdetail.del');
+Route::post('/updatecart', [CartDetailController::class, 'update'])->name('cartdetail.update');
+// Route::get('/checkout',[OrderDetailController::class,'index'])->name('checkout');
+Route::get('/checkout', [OrderDetailController::class,'index'])->name('checkout');
+
+Route::get('/dashboard',[AdminController::class , 'index'])->name('dashboard');
+
 Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
 require __DIR__ . '/auth.php';

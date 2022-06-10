@@ -5,7 +5,7 @@
             <div class="container ">
                 <div class="row">
                     <div class="col-md-6  ">
-                        <div class="box ">
+                        {{-- <div class="box ">
                             <div class="img-box">
                                 <img src="{{ asset('frontend/images/o1.jpg') }}" alt="">
                             </div>
@@ -21,10 +21,14 @@
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
+                        
+                        <img alt="" src="https://cdn.chanhtuoi.com/uploads/2016/03/combo-g%C3%A0-gi%C3%B2n-kfc.png" style="width: 100%;" />
+
                     </div>
-                    <div class="col-md-6  ">
-                        <div class="box ">
+                  
+                    <div class="col-md-6">
+                        {{-- <div class="box ">
                             <div class="img-box">
                                 <img src="{{ asset('frontend/images/o2.jpg') }}" alt="">
                             </div>
@@ -40,7 +44,8 @@
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
+                        <img alt="" src="https://thanglon66.com/ga-ran-kfc-bao-nhieu-tien/imager_2925.jpg" style="width: 100%;" />
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  ml-2 ">
-                    @if ($active == 1)
+                    @if (isset($active) && $active == 1)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
@@ -24,7 +24,7 @@
                     </li>
 
                     
-                    @if ($active == 2)
+                   @if (isset($active) && $active == 2)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{route('about')}}">GIỚI THIỆU</a>
                     </li>
 
-                    @if ($active == 3)
+                   @if (isset($active) && $active == 3)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
@@ -40,7 +40,7 @@
                         <a class="nav-link" href="{{ route('menu') }}">THỰC ĐƠN</a>
                     </li>
 
-                    @if ($active == 4)
+                   @if (isset($active) && $active == 4)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
@@ -48,7 +48,7 @@
                         <a class="nav-link" href="{{ route('promo') }}">KHUYẾN MÃI</a>
                     </li>
 
-                    @if ($active == 5)
+                   @if (isset($active) && $active == 5)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">

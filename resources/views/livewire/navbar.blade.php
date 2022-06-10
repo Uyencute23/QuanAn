@@ -11,8 +11,8 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();
-                            this.closest('form').submit();">Đăng xuất</a>
+                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                 this.closest('form').submit();">Đăng xuất</a>
             </form>
         </div>
     </div>

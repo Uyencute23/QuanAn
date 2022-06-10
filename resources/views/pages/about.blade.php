@@ -65,8 +65,8 @@
         <hr  style="width: 80%;size:5px" />
         <section class="book_section layout_padding">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-6" style=" ">
                         <h2 class="text-center">
                             Liên hệ
                         </h2>
@@ -93,7 +93,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    
                         
                        
                     </div>

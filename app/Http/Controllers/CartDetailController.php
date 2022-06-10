@@ -50,7 +50,7 @@ class CartDetailController extends Controller
                 $cartdetail->cart_id = Auth::user()->customer->cart->id;
                 $cartdetail->product_id = $request->product_id;
                 $cartdetail->quantity = $request->quantity;
-                $cartdetail->total = $sp->price * $request->quantity;
+                $cartdetail->total = $sp->price ;
                 if ($cartdetail->save())
                     return response()->json(['success' => $cartdetail], 200);
             } else {
@@ -87,25 +87,35 @@ class CartDetailController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCartDetailRequest  $request
-     * @param  \App\Models\CartDetail  $cartDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCartDetailRequest $request, CartDetail $cartDetail)
+    public function update(Request $request)
     {
         //
+        $request->validate([
+            'product_id' => ['required'],
+            'quantity' => ['required'],
+        ]);
+        $sp = Product::find($request->product_id);
+        if ($sp) {
+            $current = CartDetail::where('cart_id', "=", Auth::user()->customer->cart->id)->where('product_id', '=', $sp->id)->first();
+            // dd($current);
+            // return response(['success' => $current,'sp'=>Auth::user()->customer->cart->id], 200);
+             {
+                // $current->total =  $current->total + $sp->price * $request->quantity;
+                $current->quantity = intval( $request->quantity);
+                if ($current->save())
+                    return response()->json(['success' => $current], 200);
+            }
+
+            return response()->json(['fail' => 'không thành công,sản phẩm không có trong giỏ']);
+        }
+
     }
 
   
     public function destroy($id)
     {
-        //
         $dt = CartDetail::find($id);
         $dt->delete();
         return response(['success'=>'delete success','prod_del'=> $dt]);
-
     }
 }

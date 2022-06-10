@@ -10,7 +10,11 @@
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "yajra/laravel-datatables": "^9.0",
+        "yajra/laravel-datatables-buttons": "^9.0",
+        "yajra/laravel-datatables-editor": "^1.25",
+        "yajra/laravel-datatables-oracle": "^10.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
