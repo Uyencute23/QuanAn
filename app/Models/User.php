@@ -46,4 +46,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class, 'user_id');
     }
+    public function staff()
+    {
+        return $this->hasOne(Staff::class, 'user_id');
+    }
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id');
+    }
 }

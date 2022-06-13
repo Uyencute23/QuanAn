@@ -18,4 +18,8 @@ class Customer extends Model
     {
         return $this->hasOne(Cart::class, 'customer_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProductDataTable;
+use App\DataTables\ProductDataTableEditor;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -13,9 +15,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.pages.product');
+    }
+
+    public function store(ProductDataTableEditor $editor)
+    {
+        return $editor->process(request());
     }
 
     /**
@@ -28,16 +35,16 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProductRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreProductRequest $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \App\Http\Requests\StoreProductRequest  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(StoreProductRequest $request)
+    // {
+    //     //
+    // }
 
 
     public function show($id)

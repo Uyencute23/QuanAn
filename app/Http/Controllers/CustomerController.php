@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CustomerDataTable;
+use App\DataTables\CustomerDataTableEditor;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(CustomerDataTable $dataTable)
     {
-        //
+        // dd(User::all());
+        return $dataTable->render('admin.pages.users');
     }
-
+    public function store(CustomerDataTableEditor $editor)
+    {
+        return $editor->process(request());
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,16 +29,16 @@ class CustomerController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCustomerRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCustomerRequest $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \App\Http\Requests\StoreCustomerRequest  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(StoreCustomerRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.

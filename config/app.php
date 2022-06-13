@@ -163,7 +163,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -193,6 +194,33 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Image' => Intervention\Image\Facades\Image::class, 
     ])->toArray(),
-
+    'datatableLanguage' => [
+        "decimal" => "",
+        "emptyTable" => "Không có dữ liệu phù hợp",
+        "info" => "Đang xem từ _START_ đến _END_ trên tổng _TOTAL_ ",
+        "infoEmpty" => "Đang xem từ 0 đến 0 trên tổng 0 ",
+        "infoFiltered" => "(lọc trong _MAX_ total)",
+        "infoPostFix" => "",
+        "thousands" => ",",
+        "lengthMenu" => "Hiển thị _MENU_ ",
+        "loadingRecords" => "Đang tải...",
+        "processing" => "Đang xử lý...",
+        "search" => "Tìm kiếm:",
+        "zeroRecords" => "Không tìm thấy dữ liệu phù hợp",
+        "paginate" => [
+            "first" => "Đầu tiên",
+            "last" => "Cuối",
+            "next" => "▶",
+            "previous" => "◀"
+        ],
+        "aria" => [
+            "sortAscending" => "=> sắp xếp tăng dần",
+            "sortDescending" => "=> sắp xép giảm dần"
+        ],
+        'select'=> [ 
+            'rows'=> "đã chọn %d hàng"
+        ]
+    ],
 ];

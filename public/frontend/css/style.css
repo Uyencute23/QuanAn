@@ -2823,7 +2823,7 @@ button.close {
 .modal-login-content .left-content {
     min-height: 380px;
     padding: 24px;
-    width: 60%;
+    /* width: 60%; */
 }
 .modal-login-content .left-content .modal-footer {
     padding: 0;
@@ -2832,7 +2832,7 @@ button.close {
 .modal-login-content .right-content {
     position: absolute;
     z-index: 2;
-    width: 40%;
+    width: 50%;
     height: 100%;
     right: 0;
     top: 0;

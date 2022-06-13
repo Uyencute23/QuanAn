@@ -92,10 +92,13 @@
 <div class="modal modal-login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
+        
         <div class="modal-content">
-            <div class="modal-login-content modal-body">
-                <button type="button" class="close btn" data-dismiss="modal"><span
-                        aria-hidden="true">×</span></button>
+            <div class="modal-login-content ">
+              <div>
+                <button type="button" class="close " data-dismiss="modal"><span
+                    aria-hidden="true">×</span></button>
+              </div>
                 <div class="left-content">
                     <nav class="login-nav nav nav-tabs" role="tablist">
                         <a id="controlled-tab-tab-login" data-toggle="tab" href="#login-form" aria-selected="true"

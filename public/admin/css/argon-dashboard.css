@@ -71,7 +71,9 @@
     scroll-behavior: smooth;
   }
 }
-
+.min-w-1{
+  min-width: 200px;
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

@@ -21,8 +21,15 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'users.action')
-            ->setRowId('id');
+            ->setRowId('id')
+            ->addColumn('role', function ($user) {
+                if($user->role->name == 'admin'){
+                    return 'Admin';
+                }else{
+                    return 'Khách Hàng';
+                }
+            });
+
     }
 
     /**
@@ -47,15 +54,19 @@ class UsersDataTable extends DataTable
                     ->setTableId('users-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->dom('lBfrtip')
+                    // ->orderBy(1)
                     ->buttons(
-                        Button::make('create'),
+                        Button::make('create')->editor('editor'),
+                        Button::make('edit')->editor('editor'),
+                        Button::make('remove')->editor('editor'),
                         // Button::make('export'),
                         // Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')
-                    );
+                    )
+                    ->select('id', 'name', 'status', 'date_time', 'created_at', 'updated_at')
+                    ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -66,15 +77,12 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('id')->className('text-center'),
+            Column::make('name')->title('Họ và Tên'),
+            Column::make('email')->title('Email'),
+            Column::make('role')->title('Quyền')->className('text-center'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
         ];
     }
 

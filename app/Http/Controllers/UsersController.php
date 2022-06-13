@@ -13,10 +13,10 @@ class UsersController extends Controller
     public function index(UsersDataTable $dataTable)
     {
         // dd(User::all());
-        return $dataTable->render('admin.pages.me');
+        return $dataTable->render('admin.pages.users');
     }
-    // public function store(UsersDataTableEditor $editor)
-    // {
-    //     return $editor->process(request());
-    // }
+    public function store(UsersDataTableEditor $editor)
+    {
+        return $editor->process(request());
+    }
 }

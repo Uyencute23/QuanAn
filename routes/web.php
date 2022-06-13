@@ -9,7 +9,7 @@ use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderDetailController;
 use Illuminate\Support\Facades\Route;
-
+use UniSharp\LaravelFilemanager\Lfm;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Lfm::routes();
+});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/login', function () {
 //     return view('pages.login');
@@ -40,14 +42,11 @@ Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('pr
 
 Route::get('/promo', [PromotionController::class, 'index'])->name('promo');
 
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth')->name('cart');
-Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->name('cartdetail.del');
-Route::post('/updatecart', [CartDetailController::class, 'update'])->name('cartdetail.update');
+Route::get('/cart', [CartController::class, 'index'])->middleware(['auth','customer'])->name('cart');
+Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->middleware(['auth','customer'])->name('cartdetail.del');
+Route::post('/updatecart', [CartDetailController::class, 'update'])->middleware(['auth','customer'])->name('cartdetail.update');
 // Route::get('/checkout',[OrderDetailController::class,'index'])->name('checkout');
-Route::get('/checkout', [OrderDetailController::class,'index'])->name('checkout');
-
-Route::get('/dashboard',[AdminController::class , 'index'])->name('dashboard');
-
+Route::get('/checkout', [OrderDetailController::class,'index'])->middleware(['auth','customer'])->name('checkout');
 Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
 require __DIR__ . '/auth.php';

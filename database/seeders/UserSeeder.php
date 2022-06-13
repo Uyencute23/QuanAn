@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 class UserSeeder extends Seeder
@@ -21,6 +22,7 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
 
         $users = [
+            ['Admin', '12345678', 'admin@gmail.com','1'],
         	['Trần Thị Xuân', '12345678', 'Xuãnuan9x@gmail.com','2'],
             ['Trần Thị Hoài Hương', '12345678', 'hoaahuong@gmail.com','2'],
             ['Hà Tùng Lâm','12345678','Tunglam9x@gmail.com','2'], 
@@ -48,7 +50,7 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             User::create([
                 'name' => $user[0],
-                'password' => $user[1],
+                'password' => Hash::make($user[1]),
                 'email' => $user[2],
                 'role_id' => $user[3]
             ]);

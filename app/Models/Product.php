@@ -15,4 +15,8 @@ class Product extends Model
         'img',
         'description',
     ];
+    public function producType()
+    {
+        return $this->belongsTo(ProductType::class, 'product_type_id');
+    }
 }

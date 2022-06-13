@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\StaffDataTable;
+use App\DataTables\StaffDataTableEditor;
 use App\Models\Staff;
 use App\Http\Requests\StoreStaffRequest;
 use App\Http\Requests\UpdateStaffRequest;
@@ -13,11 +15,14 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(StaffDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.pages.staffs');
     }
-
+    public function store(StaffDataTableEditor $editor)
+    {
+        return $editor->process(request());
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,16 +33,16 @@ class StaffController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreStaffRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreStaffRequest $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \App\Http\Requests\StoreStaffRequest  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(StoreStaffRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.

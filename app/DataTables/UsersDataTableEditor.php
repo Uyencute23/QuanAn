@@ -2,8 +2,9 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Models\User ;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTablesEditor;
 
@@ -23,6 +24,15 @@ class UsersDataTableEditor extends DataTablesEditor
             'name'  => 'required',
         ];
     }
+
+    public function creating(Model $model, array $data)
+    {
+        $model->role_id = 2;
+        $model->name = $data['name'];
+        $model->email = $data['email'];
+        $model->password = Hash::make($data['password']);
+    }
+
 
     /**
      * Get edit action validation rules.
@@ -48,4 +58,5 @@ class UsersDataTableEditor extends DataTablesEditor
     {
         return [];
     }
+
 }
