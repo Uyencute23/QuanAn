@@ -12,6 +12,10 @@ class AdminController extends Controller
     function index(){
        // $data = ['types'=>ProductType::all(),'prods'=>Product::all(),'active'=> 1];
         // dd($data);
-        return view('admin.pages.dashboard');
+        $data = [
+            'title' => 'Dashboard',
+            'active' => [2,1]
+        ];
+        return view('admin.pages.dashboard',$data);
     }
 }

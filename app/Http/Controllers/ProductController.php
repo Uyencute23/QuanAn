@@ -7,6 +7,7 @@ use App\DataTables\ProductDataTableEditor;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\ProductType;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,13 @@ class ProductController extends Controller
      */
     public function index(ProductDataTable $dataTable)
     {
-        return $dataTable->render('admin.pages.product');
+        $type = ProductType::all();
+        $data =[
+            'title' => 'Quản lý món ăn',
+            'type' => $type,
+            'active' => [2,4],
+        ];
+        return $dataTable->render('admin.pages.product',$data);
     }
 
     public function store(ProductDataTableEditor $editor)

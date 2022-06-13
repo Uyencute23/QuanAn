@@ -20,16 +20,16 @@ class StaffDataTableEditor extends DataTablesEditor
     {
         return [
             // 'email' => 'required|email|unique:' . $this->resolveModel()->getTable(),
-            'user_id'  => 'required',
+            'phone'  => 'nullable|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/|max:11|min:10',
         ];
     }
-    public function creating(Model $model, array $data)
-    {
-        // $model->user_id = $data['user_id'];
-        $model->phone = $data['phone'];
-        $model->img = $data['img'];
-        // $model->password = Hash::make($data['password']);
-    }
+    // public function creating(Model $model, array $data)
+    // {
+    //     // $model->user_id = $data['user_id'];
+    //     $model->phone = $data['phone'];
+    //     $model->img = $data['img'];
+    //     // $model->password = Hash::make($data['password']);
+    // }
     
     /**
      * Get edit action validation rules.

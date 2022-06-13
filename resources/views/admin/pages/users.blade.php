@@ -90,6 +90,22 @@
 
                     },
                     {
+                            label: "Vai trò",
+                            name: "role_id",
+                            type: "select",
+                            // placeholder: "Tên Vắc-xin",
+                            options: [
+                                @foreach ($role as $r)
+                                    {
+                                        label: "{{ $r->name }}",
+                                        value: "{{ $r->id }}"
+                                    },
+                                @endforeach
+                            ]
+
+
+                        },
+                    {
                         label: "Email",
                         name: "email"
                     },
@@ -101,6 +117,7 @@
                         label: "Nhập lại mật khẩu",
                         name: "password_confirmation",
                     },
+                    
                     // {
                     //     label: "Ngày bắt đầu",
                     //     name: "date_time",

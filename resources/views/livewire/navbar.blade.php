@@ -6,7 +6,7 @@
             <i class="fa fa-user" aria-hidden="true"></i>
         </a>
         <div class="dropdown-menu">
-            @if (Auth::user()->role_id == 1)
+            @if (Auth::check() && Auth::user()->role_id == 1)
             <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
             @endif
             <a class="dropdown-item" href="#">Thông tin người dùng</a>

@@ -20,15 +20,32 @@ class StaffDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query->with('user'))
             ->setRowId('id')
-            ->addColumn('name', function ($staff) {
-               return $staff->user->name;
+            // ->addColumn('name', function ($staff) {
+            //     return $staff->user->name;
+            // })
+            // ->addColumn('email', function ($staff) {
+            //     return $staff->user->email;
+            // })
+            ->addColumn('image', function ($staff) {
+                if ($staff->img) {
+                    return '<img  src="' . $staff->img . '" width="100px" height="100px" style="object-fit: contain;">';
+                } else {
+                    return '<img src="https://via.placeholder.com/100x100" width="100px" height="100px">';
+                }
             })
-            ->addColumn('email', function ($staff) {
-                return $staff->user->email;
-             })
-            ;
+            ->editColumn('created_at', function ($staff) {
+                if ($staff->created_at) {
+                    return $staff->created_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->editColumn('updated_at', function ($staff) {
+                if ($staff->updated_at) {
+                    return $staff->updated_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->rawColumns(['image']);
     }
 
     /**
@@ -50,19 +67,26 @@ class StaffDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('staff-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('lBfrtip')
-                    // ->orderBy(1)
-                    ->buttons(
-                        // Button::make('create')->editor('editor'),
-                        Button::make('edit')->editor('editor'),
-                        Button::make('remove')->editor('editor'),
-                        Button::make('print')->text('In'),
-                    )
-                    ->select('id', 'name', 'img', 'phone', 'created_at', 'updated_at')
-                    ->language(config('app.datatableLanguage'));
+            ->setTableId('staff-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('lBfrtip')
+            // ->orderBy(1)
+            ->buttons(
+                // Button::make('create')->editor('editor'),
+                Button::make('edit')->editor('editor')->className('bg-primary'),
+                Button::make('remove')->editor('editor')->className('bg-primary'),
+                Button::make('print')->text('In')->className('bg-primary'),
+                Button::make('colvis')->text('Cột')->className('bg-primary'),
+                [
+                    'extend' => 'csv',
+                    'split' => ['pdf', 'excel'],
+                    'className' => 'bg-primary',
+                ]
+            )
+            ->select('id', 'name', 'img', 'phone', 'created_at', 'updated_at')
+           
+            ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -74,13 +98,12 @@ class StaffDataTable extends DataTable
     {
         return [
             Column::make('id')->className('text-center'),
-            Column::make('name')->title('Họ và tên'),
-            Column::make('email')->title('Email'),
-            
-            // Column::make('img')->title('Ảnh'),
-            Column::make('phone')->title('Số điện thoại'),
-            Column::make('created_at')->title('Ngày tạo'),
-            Column::make('updated_at')->title('Ngày sửa'),
+            Column::make('user.name')->title('Họ và tên'),
+            Column::make('user.email')->title('Email'),
+            Column::make('image')->title('Ảnh'),
+            Column::make('phone')->title('Số điện thoại')->className('text-center')->defaultContent('Chưa có'),
+            Column::make('created_at')->title('Ngày tạo')->className('text-center')->defaultContent('Chưa có'),
+            Column::make('updated_at')->title('Ngày sửa')->className('text-center')->defaultContent('Chưa có'),
         ];
     }
 

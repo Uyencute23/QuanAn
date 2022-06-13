@@ -11,7 +11,7 @@
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
-                        <h5>Quản lý món ăn</h5>
+                        <h5>Quản lý danh mục món ăn</h5>
                     </div>
                     <div class="card-body p-3">
                         <div class="table-responsive">
@@ -33,8 +33,8 @@
                 });
 
                 var editor = new $.fn.dataTable.Editor({
-                    ajax: 'product',
-                    table: "#product-table",
+                    ajax: 'product-type',
+                    table: "#producttype-table",
                     display: 'bootstrap',
                     fields: [{
                             label: "Tên món ăn",
@@ -49,27 +49,29 @@
                             // clearText: "Hủy bỏ",
                             // noImageText: 'Không có hình ảnh',
                         },
-                        {
-                            label: "Giá",
-                            name: "price",
-                            attr: {
-                                type: 'number'
-                            }
-                        },
-                        {
-                            label: "Loại món ăn",
-                            name: "product_type_id",
-                            type: "select",
-                            // placeholder: "Tên Vắc-xin",
-                            options: [
-                                @foreach ($type as $t)
-                                    {
-                                        label: "{{ $t->name }}",
-                                        value: "{{ $t->id }}"
-                                    },
-                                @endforeach
-                            ]
-                        },
+                        // {
+                        //     label: "Giá",
+                        //     name: "price",
+                        //     attr: {
+                        //         type: 'number'
+                        //     }
+                        // },
+                        // {
+                        //     label: "Loại món ăn",
+                        //     name: "producttype_type_id",
+                        //     type: "select",
+                        //     // placeholder: "Tên Vắc-xin",
+                        //     options: [
+                        //         @foreach ($type as $t)
+                        //             {
+                        //                 label: "{{ $t->name }}",
+                        //                 value: "{{ $t->id }}"
+                        //             },
+                        //         @endforeach
+                        //     ]
+
+
+                        // },
                         {
                             label: "Mô tả",
                             name: "description",

@@ -20,16 +20,18 @@ class UsersDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query->with('role'))
             ->setRowId('id')
-            ->addColumn('role', function ($user) {
-                if($user->role->name == 'admin'){
-                    return 'Admin';
-                }else{
-                    return 'Khách Hàng';
+            ->editColumn('created_at', function ($user) {
+                if ($user->created_at) {
+                    return $user->created_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->editColumn('updated_at', function ($user) {
+                if ($user->updated_at) {
+                    return $user->updated_at->format('d/m/Y H:i:s');
                 }
             });
-
     }
 
     /**
@@ -51,22 +53,24 @@ class UsersDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('users-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('lBfrtip')
-                    // ->orderBy(1)
-                    ->buttons(
-                        Button::make('create')->editor('editor'),
-                        Button::make('edit')->editor('editor'),
-                        Button::make('remove')->editor('editor'),
-                        // Button::make('export'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
-                    )
-                    ->select('id', 'name', 'status', 'date_time', 'created_at', 'updated_at')
-                    ->language(config('app.datatableLanguage'));
+            ->setTableId('users-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('lBfrtip')
+            // ->orderBy(1)
+            ->buttons(
+                Button::make('create')->editor('editor'),
+                Button::make('edit')->editor('editor'),
+                Button::make('remove')->editor('editor'),
+                Button::make('colvis')->text('Cột'),
+                [
+                    'extend' => 'csv',
+                    'split' => ['pdf', 'excel'],
+                    // 'className' => 'bg-primary',
+                ]
+            )
+            ->select('id', 'name', 'status', 'date_time', 'created_at', 'updated_at')
+            ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -80,9 +84,9 @@ class UsersDataTable extends DataTable
             Column::make('id')->className('text-center'),
             Column::make('name')->title('Họ và Tên'),
             Column::make('email')->title('Email'),
-            Column::make('role')->title('Quyền')->className('text-center'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
+            Column::make('role.name')->title('Quyền')->className('text-center'),
+            Column::make('created_at')->title('Ngày tạo'),
+            Column::make('updated_at')->title('Ngày cập nhật'),
         ];
     }
 

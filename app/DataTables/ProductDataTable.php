@@ -20,30 +20,34 @@ class ProductDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query->with('productype'))
             ->setRowId('id')
             ->addColumn('image', function ($product) {
-                return '<img src="'.$product->img.'" width="100px" height="100px">';
+                return '<img src="' . $product->img . '" width="100px" height="100px">';
             })
             ->addColumn('subname', function ($product) {
-                return '<h6>'. mb_strimwidth($product->name, 0, 120, "...").'</h6>';
-             })
+                return '<h6>' . mb_strimwidth($product->name, 0, 120, "...") . '</h6>';
+            })
             ->addColumn('pricef', function ($product) {
-                return  number_format($product->price, 0, ',', '.').'đ';
+                return  number_format($product->price, 0, ',', '.') . 'đ';
             })
             ->addColumn('subdescription', function ($product) {
-               return mb_strimwidth($product->description, 0, 120, "...");
+                return mb_strimwidth($product->description, 0, 120, "...");
             })
             ->editColumn('created_at', function ($product) {
-                return $product->created_at->format('d/m/Y');
+                if ($product->created_at) {
+                    return $product->created_at->format('d/m/Y H:i:s');
+                }
             })
             ->editColumn('updated_at', function ($product) {
-                return $product->updated_at->format('d/m/Y');
+                if ($product->updated_at) {
+                    return $product->updated_at->format('d/m/Y H:i:s');
+                }
             })
             ->addColumn('product_type', function ($product) {
-                return $product->producType->name;
+                return $product->productype->name;
             })
-            ->rawColumns(['image', 'subname', 'subdescription','pricef']);
+            ->rawColumns(['image', 'subname', 'subdescription', 'pricef']);
     }
 
     /**
@@ -65,18 +69,24 @@ class ProductDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('product-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('lBfrtip')
-                    ->buttons(
-                        // Button::make('create')->editor('editor'),
-                        Button::make('edit')->editor('editor')->className('bg-warning'),
-                        Button::make('remove')->editor('editor')->className('bg-warning'),
-                        Button::make('print')->text('In')->className('bg-warning'),
-                    )
-                    ->select('id', 'name', 'img', 'created_at', 'updated_at')
-                    ->language(config('app.datatableLanguage'));
+            ->setTableId('product-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('lBfrtip')
+            ->buttons(
+                Button::make('create')->editor('editor')->className('bg-warning'),
+                Button::make('edit')->editor('editor')->className('bg-warning'),
+                Button::make('remove')->editor('editor')->className('bg-warning'),
+                Button::make('print')->text('In')->className('bg-warning'),
+                Button::make('colvis')->text('Cột')->className('bg-warning'),
+                [
+                    'extend' => 'csv',
+                    'split' => ['pdf', 'excel'],
+                    'className' => 'bg-warning',
+                ]
+            )
+            ->select('id', 'name', 'img', 'created_at', 'updated_at')
+            ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -92,9 +102,13 @@ class ProductDataTable extends DataTable
             Column::make('subname')->title('Tên sản phẩm')->className('text-wrap min-w-1'),
             Column::make('pricef')->title('Đơn giá')->className('text-center'),
             Column::make('product_type')->title('Loại sản phẩm')->className('text-center'),
-            Column::make('subdescription')->title('Mô tả')->className('text-wrap min-w-1'),   
+            Column::make('subdescription')->title('Mô tả')->className('text-wrap min-w-1'),
             Column::make('created_at')->title('Ngày tạo')->className('text-center'),
             Column::make('updated_at')->title('Ngày cập nhật')->className('text-center'),
+            Column::make('name')->searchable(true)->visible(false),
+            Column::make('description')->searchable(true)->visible(false),
+            Column::make('price')->searchable(true)->visible(false),
+            Column::make('productype.name')->searchable(true)->visible(false),
         ];
     }
 

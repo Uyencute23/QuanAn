@@ -13,7 +13,12 @@ class CustomerController extends Controller
     public function index(CustomerDataTable $dataTable)
     {
         // dd(User::all());
-        return $dataTable->render('admin.pages.users');
+        $data =[
+            'title' => 'Quản lý khách hàng',
+            // 'type' => $type,
+            'active' => [2,3]
+        ];
+        return $dataTable->render('admin.pages.customer',$data);
     }
     public function store(CustomerDataTableEditor $editor)
     {

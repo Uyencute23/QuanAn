@@ -24,14 +24,19 @@ class UsersDataTableEditor extends DataTablesEditor
             'name'  => 'required',
         ];
     }
-
     public function creating(Model $model, array $data)
     {
-        $model->role_id = 2;
-        $model->name = $data['name'];
-        $model->email = $data['email'];
-        $model->password = Hash::make($data['password']);
+        $data['password'] = bcrypt($data['password']);
+
+        return $data;
     }
+    // public function creating(Model $model, array $data)
+    // {
+    //     $model->role_id = 2;
+    //     $model->name = $data['name'];
+    //     $model->email = $data['email'];
+    //     $model->password = Hash::make($data['password']);
+    // }
 
 
     /**

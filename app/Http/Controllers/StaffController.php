@@ -17,7 +17,12 @@ class StaffController extends Controller
      */
     public function index(StaffDataTable $dataTable)
     {
-        return $dataTable->render('admin.pages.staffs');
+        $data =[
+            'title' => 'Quản lý nhân viên',
+            // 'type' => $type,
+            'active' => [2,2]
+        ];
+        return $dataTable->render('admin.pages.staffs',$data);
     }
     public function store(StaffDataTableEditor $editor)
     {

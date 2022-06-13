@@ -20,15 +20,32 @@ class CustomerDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query->with('user'))
             ->setRowId('id')
             ->addColumn('name', function ($customer) {
-               return $customer->user->name;
+                return $customer->user->name;
             })
             ->addColumn('email', function ($customer) {
                 return $customer->user->email;
-             })
-            ;
+            })
+            ->addColumn('image', function ($customer) {
+                if ($customer->img) {
+                    return '<img  src="' . $customer->img . '" width="100px" height="100px" style="object-fit: contain;">';
+                } else {
+                    return '<img src="https://via.placeholder.com/100x100" width="100px" height="100px">';
+                }
+            })
+            ->editColumn('created_at', function ($customer) {
+                if ($customer->created_at) {
+                    return $customer->created_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->editColumn('updated_at', function ($customer) {
+                if ($customer->updated_at) {
+                    return $customer->updated_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->rawColumns(['image']);;
     }
 
     /**
@@ -50,18 +67,24 @@ class CustomerDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('customer-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('lBfrtip')
-                    ->buttons(
-                        // Button::make('create')->editor('editor'),
-                        Button::make('edit')->editor('editor')->className('bg-warning'),
-                        Button::make('remove')->editor('editor')->className('bg-warning'),
-                        Button::make('print')->text('In')->className('bg-warning'),
-                    )
-                    ->select('id', 'name', 'img', 'created_at', 'updated_at')
-                    ->language(config('app.datatableLanguage'));
+            ->setTableId('customer-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('lBfrtip')
+            ->buttons(
+                // Button::make('create')->editor('editor'),
+                Button::make('edit')->editor('editor')->className('bg-success'),
+                Button::make('remove')->editor('editor')->className('bg-success'),
+                Button::make('print')->text('In')->className('bg-success'),
+                Button::make('colvis')->text('Cột')->className('bg-success'),
+                [
+                    'extend' => 'csv',
+                    'split' => ['pdf', 'excel'],
+                    'className' => 'bg-success',
+                ]
+            )
+            ->select('id', 'name', 'img', 'created_at', 'updated_at')
+            ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -73,13 +96,13 @@ class CustomerDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name')->title('Họ và tên'),
-            Column::make('email')->title('Email'),
-            
-            // Column::make('img')->title('Ảnh'),
-            Column::make('phone')->title('Số điện thoại'),
-            Column::make('created_at')->title('Ngày tạo'),
-            Column::make('updated_at')->title('Ngày sửa'),
+            Column::make('user.name')->title('Họ và tên'),
+            Column::make('user.email')->title('Email'),
+            Column::make('image')->title('Ảnh'),
+            Column::make('phone')->title('Số điện thoại')->defaultContent('Chưa có'),
+            Column::make('address')->title('Địa chỉ')->defaultContent('Chưa có'),
+            Column::make('created_at')->title('Ngày tạo')->defaultContent('Chưa có'),
+            Column::make('updated_at')->title('Ngày sửa')->defaultContent('Chưa có'),
         ];
     }
 

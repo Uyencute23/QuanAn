@@ -142,7 +142,7 @@
                 //     editor.inline(this);
                 // });
                 {{ $dataTable->generateScripts() }}
-                $('<a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-primary text-white" onclick="lfm()"> <i class="fas fa-image"></i> Choose </a>')
+                $('<a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-primary text-white" onclick="lfm()"> <i class="fas fa-image"></i>Chọn ảnh</a>')
                     .insertBefore(
                         editor.field('img').input()
                     );

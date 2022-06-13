@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProductTypeDataTable;
+use App\DataTables\ProductTypeDataTableEditor;
 use App\Models\ProductType;
 use App\Http\Requests\StoreProductTypeRequest;
 use App\Http\Requests\UpdateProductTypeRequest;
 
 class ProductTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(ProductTypeDataTable $dataTable)
     {
-        //
+        $type = ProductType::all();
+        $data =[
+            'title' => 'Quản lý danh mục',
+            'type' => $type,
+            'active' => [2,5],
+        ];
+        return $dataTable->render('admin.pages.product-type',$data);
     }
 
+    public function store(ProductTypeDataTableEditor $editor)
+    {
+        return $editor->process(request());
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,16 +35,16 @@ class ProductTypeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProductTypeRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreProductTypeRequest $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \App\Http\Requests\StoreProductTypeRequest  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(StoreProductTypeRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.

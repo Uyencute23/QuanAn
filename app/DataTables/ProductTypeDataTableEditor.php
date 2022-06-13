@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\Customer;
+use App\Models\ProductType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTablesEditor;
 
-class CustomerDataTableEditor extends DataTablesEditor
+class ProductTypeDataTableEditor extends DataTablesEditor
 {
-    protected $model = Customer::class;
+    protected $model = ProductType::class;
 
     /**
      * Get create action validation rules.
@@ -34,7 +34,7 @@ class CustomerDataTableEditor extends DataTablesEditor
     {
         return [
             // 'email' => 'sometimes|required|email|' . Rule::unique($model->getTable())->ignore($model->getKey()),
-            'phone'  => 'nullable|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/|max:11|min:10',
+            // 'name'  => 'sometimes|required',
         ];
     }
 

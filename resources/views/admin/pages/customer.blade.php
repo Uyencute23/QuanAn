@@ -11,7 +11,7 @@
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
                         {{-- <a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="btn btn-primary text-white"> <i class="fas fa-image"></i> Choose </a> --}}
-                        Quản lý nhân viên
+                        <h5>Quản lý khách hàng</h5>
                     </div>
                     <div class="card-body p-3">
                         <div class="table-responsive">
@@ -49,10 +49,10 @@
                             // clearText: "Hủy bỏ",
                             // noImageText: 'Không có hình ảnh',
                         },
-                        // {
-                        //     label: "Mật khẩu",
-                        //     name: "password",
-                        // },
+                        {
+                            label: "Địa chỉ",
+                            name: "address",
+                        },
                         // {
                         //     label: "Nhập lại mật khẩu",
                         //     name: "password_confirmation",
@@ -95,7 +95,7 @@
                 //     editor.inline(this);
                 // });
                 {{ $dataTable->generateScripts() }}
-                $('<a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-primary text-white" onclick="lfm()"> <i class="fas fa-image"></i> Choose </a>')
+                $('<a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-primary text-white" onclick="lfm()"> <i class="fas fa-image"></i>Chọn ảnh</a>')
                     .insertBefore(
                         editor.field('img').input()
                     );

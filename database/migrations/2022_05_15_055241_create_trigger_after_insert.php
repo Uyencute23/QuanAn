@@ -21,11 +21,11 @@ return new class extends Migration
             BEGIN
                 IF(NEW.role_id = 1)
                 THEN
-                INSERT INTO staff (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
+                INSERT INTO staff (user_id, created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
                 END IF;
                 IF(NEW.role_id = 2)
                 THEN
-                INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at;
+                INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
                 END IF;
             END'
         );

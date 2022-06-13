@@ -16,8 +16,9 @@ class RoleSeeder extends Seeder
         DB::table('roles')->truncate();
 
         $roles = [
-        	'Admin',
-            'Customer' 
+        	// 'Admin',
+            'Nhân viên',
+            'Khách Hàng' 
         ];
 
         foreach ($roles as $role) {
