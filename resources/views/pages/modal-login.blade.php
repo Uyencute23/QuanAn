@@ -94,11 +94,9 @@
     <div class="modal-dialog">
         
         <div class="modal-content">
+            <button type="button" class="close mr-2" data-dismiss="modal"><span
+                aria-hidden="true">×</span></button>
             <div class="modal-login-content ">
-              <div>
-                <button type="button" class="close " data-dismiss="modal"><span
-                    aria-hidden="true">×</span></button>
-              </div>
                 <div class="left-content">
                     <nav class="login-nav nav nav-tabs" role="tablist">
                         <a id="controlled-tab-tab-login" data-toggle="tab" href="#login-form" aria-selected="true"

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-               THỰC ĐƠN
+                THỰC ĐƠN
             </h2>
         </div>
 
@@ -41,7 +41,7 @@
                                             {{ number_format($prod->price, 0, ',', '.') }}đ
 
                                         </h6>
-                                        <a onclick="addProduct({{ $prod->id }})">
+                                        <a @if (!Auth::user()) data-toggle="modal" data-target="#loginModal" @endif onclick="addProduct({{ $prod->id }})">
                                             <i class="fa fa-shopping-cart" style="color: white" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -62,22 +62,23 @@
     @push('scripts')
         <script>
             function addProduct(id) {
-                // console.log('hihi');
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ route('product.add') }}',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        product_id: id,
-                        quantity: 1
-                    },
-                    success: function(data) {
-                        if (data.success) {
-                            alert('Thêm thành công')
-                        }
-                        console.log(data)
-                    }
-                });
+               
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('product.add') }}',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                product_id: id,
+                                quantity: 1
+                            },
+                            success: function(data) {
+                                if (data.success) {
+                                    alert('Thêm thành công')
+                                }
+                                console.log(data)
+                            }
+                        });
+
 
             }
         </script>

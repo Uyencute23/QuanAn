@@ -2781,6 +2781,7 @@ button.close {
     display: block;
     zoom: 1;
     position: relative;
+    min-height: 500px;
 }
 .modal-login-content:after {
     content: ' ';
