@@ -62,7 +62,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">DOANH THU TRONG NGÀY</p>
                                         <h5 class="font-weight-bolder">
                                             $53,000
                                         </h5>
@@ -88,7 +88,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">DOANH THU TRONG THÁNG</p>
                                         <h5 class="font-weight-bolder">
                                             2,300
                                         </h5>
@@ -114,9 +114,10 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">DOANH THU TRONG NĂM</p>
                                         <h5 class="font-weight-bolder">
                                             +3,462
+                            
                                         </h5>
                                         <p class="mb-0">
                                             <span class="text-danger text-sm font-weight-bolder">-2%</span>
@@ -134,13 +135,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
+                {{-- <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">DOANH THU TRONG NĂM</p>
                                         <h5 class="font-weight-bolder">
                                             $103,430
                                         </h5>
@@ -159,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row mt-4">
                 @yield('content')
@@ -168,7 +169,7 @@
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-lg-between">
                         <div class="col-lg-6 mb-lg-0 mb-4">
-                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                            {{-- <div class="copyright text-center text-sm text-muted text-lg-start">
                                 ©
                                 <script>
                                     document.write(new Date().getFullYear())
@@ -177,7 +178,7 @@
                                 <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative
                                     Tim</a>
                                 for a better web.
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
@@ -281,10 +282,10 @@
                         data-icon="octicon-star" data-size="large" data-show-count="true"
                         aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
                     <h6 class="mt-3">Thank you for sharing!</h6>
-                    <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+                    {{-- <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
                         class="btn btn-dark mb-0 me-2" target="_blank">
                         <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-                    </a>
+                    </a> --}}
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
                         class="btn btn-dark mb-0 me-2" target="_blank">
                         <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
