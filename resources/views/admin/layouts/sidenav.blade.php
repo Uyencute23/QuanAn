@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link @if (isset($active) && $active[1] == 1) active @endif " href="{{ route('dashboard') }}">
+                <a class="nav-link @if (isset($active) && $active[1] == 0) active @endif " href="{{ route('dashboard') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -32,7 +32,7 @@
             </li>
             <div class="collapse @if (isset($active) && $active[0] == 1) show @endif ms-3" id="collapse1">
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 2) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 2) active @endif"
                         href="{{ route('staff.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 3) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 3) active @endif"
                         href="{{ route('customer.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radiu s-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -91,6 +91,27 @@
                 </a>
             </li>
             <div class="collapse @if (isset($active) && $active[0] == 2) show @endif ms-3" id="collapseTables">
+                
+                <li class="nav-item">
+                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 4) active @endif"
+                        href="{{ route('product.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-utensils text-warning"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 ">Quản lý món ăn</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 5) active @endif"
+                        href="{{ route('product-type.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-clipboard-list text-danger"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Danh mục món ăn</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link  @if (isset($active) && $active[1]== 2) active @endif"
                         href="{{ route('staff.index') }}">
@@ -102,7 +123,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 3) active @endif"
+                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 3) active @endif"
                         href="{{ route('customer.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -112,27 +133,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 4) active @endif"
-                        href="{{ route('product.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-utensils text-warning"></i>
-                        </div>
-                        <span class="nav-link-text ms-1 ">Quản lý món ăn</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 5) active @endif"
-                        href="{{ route('product-type.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-clipboard-list text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Danh mục món ăn</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 6) active @endif" href="{{ route('user.index') }}">
+                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 6) active @endif" href="{{ route('user.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-user-friends    "></i>

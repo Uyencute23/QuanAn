@@ -84,8 +84,8 @@ div.dataTables_wrapper div.dataTables_length select {
     scroll-behavior: smooth;
   }
 }
-.min-w-1{
-  min-width: 200px;
+.max-w-1{
+  max-width: 200px;
 }
 body {
   margin: 0;
@@ -26623,4 +26623,9 @@ pre[class*="language-"] {
   }
 }
 
+.dropdown-item.active,.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0d6efd;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

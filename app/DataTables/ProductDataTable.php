@@ -77,13 +77,13 @@ class ProductDataTable extends DataTable
                 Button::make('create')->editor('editor')->className('bg-warning'),
                 Button::make('edit')->editor('editor')->className('bg-warning'),
                 Button::make('remove')->editor('editor')->className('bg-warning'),
-                Button::make('print')->text('In')->className('bg-warning'),
+                // Button::make('print')->text('In')->className('bg-warning'),
                 Button::make('colvis')->text('Cột')->className('bg-warning'),
-                [
-                    'extend' => 'csv',
-                    'split' => ['pdf', 'excel'],
-                    'className' => 'bg-warning',
-                ]
+                // [
+                //     'extend' => 'csv',
+                //     'split' => ['pdf', 'excel'],
+                //     'className' => 'bg-warning',
+                // ]
             )
             ->select('id', 'name', 'img', 'created_at', 'updated_at')
             ->language(config('app.datatableLanguage'));
@@ -99,16 +99,16 @@ class ProductDataTable extends DataTable
         return [
             // Column::make('id'),  
             Column::make('image')->title('Ảnh'),
-            Column::make('subname')->title('Tên sản phẩm')->className('text-wrap min-w-1'),
+            Column::make('subname')->title('Tên sản phẩm')->className('text-wrap max-w-1'),
             Column::make('pricef')->title('Đơn giá')->className('text-center'),
             Column::make('product_type')->title('Loại sản phẩm')->className('text-center'),
-            Column::make('subdescription')->title('Mô tả')->className('text-wrap min-w-1'),
+            Column::make('subdescription')->title('Mô tả')->className('text-wrap max-w-1'),
             Column::make('created_at')->title('Ngày tạo')->className('text-center'),
             Column::make('updated_at')->title('Ngày cập nhật')->className('text-center'),
-            Column::make('name')->searchable(true)->visible(false),
-            Column::make('description')->searchable(true)->visible(false),
-            Column::make('price')->searchable(true)->visible(false),
-            Column::make('productype.name')->searchable(true)->visible(false),
+            Column::make('name')->searchable(true)->visible(false)->title(''),
+            Column::make('description')->searchable(true)->visible(false)->title(''),
+            Column::make('price')->searchable(true)->visible(false)->title(''),
+            Column::make('productype.name')->searchable(true)->visible(false)->title(''),
         ];
     }
 

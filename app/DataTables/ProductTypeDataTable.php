@@ -70,13 +70,13 @@ class ProductTypeDataTable extends DataTable
                         Button::make('create')->editor('editor'),
                         Button::make('edit')->editor('editor'),
                         Button::make('remove')->editor('editor'),
-                        Button::make('print')->text('In'),
+                        // Button::make('print')->text('In'),
                         Button::make('colvis')->text('Cột'),
-                        [
-                            'extend' => 'csv',
-                            'split' => ['pdf', 'excel'],
-                            // 'className' => 'bg-warning',
-                        ]
+                        // [
+                        //     'extend' => 'csv',
+                        //     'split' => ['pdf', 'excel'],
+                        //     // 'className' => 'bg-warning',
+                        // ]
                     )
                     ->select('id', 'name', 'img', 'created_at', 'updated_at')
                     ->language(config('app.datatableLanguage'));

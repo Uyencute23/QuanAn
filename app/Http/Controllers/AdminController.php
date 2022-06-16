@@ -14,7 +14,7 @@ class AdminController extends Controller
         // dd($data);
         $data = [
             'title' => 'Dashboard',
-            'active' => [2,1]
+            'active' => [0,0]
         ];
         return view('admin.pages.dashboard',$data);
     }

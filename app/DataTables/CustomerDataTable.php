@@ -75,13 +75,13 @@ class CustomerDataTable extends DataTable
                 // Button::make('create')->editor('editor'),
                 Button::make('edit')->editor('editor')->className('bg-success'),
                 Button::make('remove')->editor('editor')->className('bg-success'),
-                Button::make('print')->text('In')->className('bg-success'),
+                // Button::make('print')->text('In')->className('bg-success'),
                 Button::make('colvis')->text('Cột')->className('bg-success'),
-                [
-                    'extend' => 'csv',
-                    'split' => ['pdf', 'excel'],
-                    'className' => 'bg-success',
-                ]
+                // [
+                //     'extend' => 'csv',
+                //     'split' => ['pdf', 'excel'],
+                //     'className' => 'bg-success',
+                // ]
             )
             ->select('id', 'name', 'img', 'created_at', 'updated_at')
             ->language(config('app.datatableLanguage'));

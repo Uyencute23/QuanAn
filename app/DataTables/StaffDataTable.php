@@ -76,13 +76,13 @@ class StaffDataTable extends DataTable
                 // Button::make('create')->editor('editor'),
                 Button::make('edit')->editor('editor')->className('bg-primary'),
                 Button::make('remove')->editor('editor')->className('bg-primary'),
-                Button::make('print')->text('In')->className('bg-primary'),
+                // Button::make('print')->text('In')->className('bg-primary'),
                 Button::make('colvis')->text('Cột')->className('bg-primary'),
-                [
-                    'extend' => 'csv',
-                    'split' => ['pdf', 'excel'],
-                    'className' => 'bg-primary',
-                ]
+                // [
+                //     'extend' => 'csv',
+                //     'split' => ['pdf', 'excel'],
+                //     'className' => 'bg-primary',
+                // ]
             )
             ->select('id', 'name', 'img', 'phone', 'created_at', 'updated_at')
            

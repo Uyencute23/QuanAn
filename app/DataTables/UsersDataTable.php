@@ -63,11 +63,11 @@ class UsersDataTable extends DataTable
                 Button::make('edit')->editor('editor'),
                 Button::make('remove')->editor('editor'),
                 Button::make('colvis')->text('Cột'),
-                [
-                    'extend' => 'csv',
-                    'split' => ['pdf', 'excel'],
-                    // 'className' => 'bg-primary',
-                ]
+                // [
+                //     'extend' => 'csv',
+                //     'split' => ['pdf', 'excel'],
+                //     // 'className' => 'bg-primary',
+                // ]
             )
             ->select('id', 'name', 'status', 'date_time', 'created_at', 'updated_at')
             ->language(config('app.datatableLanguage'));
