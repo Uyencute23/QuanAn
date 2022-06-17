@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CreateOrderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -21,6 +22,6 @@ Route::resource('product',ProductController::class)->middleware(['auth','admin']
 Route::resource('customer',CustomerController::class)->middleware(['auth','admin']);
 Route::resource('order',OrderController::class)->middleware(['auth','admin']);
 Route::resource('product-type',ProductTypeController::class)->middleware(['auth','admin']);
-
+Route::resource('createorder',CreateOrderController::class)->middleware(['auth','admin']);
 
 ?>

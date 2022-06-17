@@ -1,10 +1,5 @@
 @extends('admin.layouts.admin-app')
 @section('content')
-<style>
-    .col-lg-8 {
-          width: 100%;
-      }
- </style>
     <div>
         {{-- <br><br>
         <div class="container">
@@ -58,7 +53,7 @@
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
 
-                        Dash board
+                        <h5>{{$title}}</h5>
                     </div>
                     <div class="card-body p-3">
                         <div class="table-responsive">

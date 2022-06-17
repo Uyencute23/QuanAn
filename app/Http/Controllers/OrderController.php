@@ -14,8 +14,8 @@ class OrderController extends Controller
     {
         // $type = ProductType::all();
         $data =[
-            'title' => 'Quản lý đơn hàng',
-            'active' => [2,5],
+            'title' => 'Quản lý hoá đơn',
+            'active' => [1,2],
             // 'type' => $type,
         ];
         return $dataTable->render('admin.pages.orders',$data);

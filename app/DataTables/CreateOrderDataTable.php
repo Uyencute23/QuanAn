@@ -2,14 +2,14 @@
 
 namespace App\DataTables;
 
-use App\Models\Order;
+use App\Models\Product;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class OrdersDataTable extends DataTable
+class CreateOrderDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,17 +20,17 @@ class OrdersDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query->with('user','customer'))
+            ->eloquent($query)
             ->setrowId('id');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Order $model
+     * @param \App\Models\Product $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Order $model)
+    public function query(Product $model)
     {
         return $model->newQuery();
     }
@@ -43,24 +43,25 @@ class OrdersDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('orders-table')
+            ->setTableId('createorder-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
             ->buttons(
                 Button::make('create')->editor('editor'),
-                Button::make('edit')->editor('editor'),
-                Button::make('remove')->editor('editor'),
-                // Button::make('print')->text('In'),
-                Button::make('colvis')->text('Cột'),
-                // Button::make('export'),
-                // Button::make('print'),
-                // Button::make('reset'),
-                // Button::make('reload')
+                Button::make('edit')->editor('editor')->className('bg-success'),
+                Button::make('remove')->editor('editor')->className('bg-success'),
+                // Button::make('print')->text('In')->className('bg-success'),
+                Button::make('colvis')->text('Cột')->className('bg-success'),
+                // [
+                //     'extend' => 'csv',
+                //     'split' => ['pdf', 'excel'],
+                //     'className' => 'bg-success',
+                // ]
             )
-            ->select('id','created_at', 'updated_at')
-            ->language(config('app.datatableLanguage'));;
+            ->select('id', 'name', 'img', 'created_at', 'updated_at')
+            ->language(config('app.datatableLanguage'));
     }
 
     /**
@@ -71,15 +72,15 @@ class OrdersDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::make('id'),
-            Column::make('user.name')->title('Khách hàng'),
-            Column::make('promo_id')->title('Mã khuyến mãi'),
-            Column::make('shippingfee')->title('Phí vận chuyển'),
-            Column::make('delivery_time')->title('Thời gian giao hàng'),
-            Column::make('toltal')->title('Tổng tiền'),
-            Column::make('status')->title('Trạng thái'),
-            Column::make('created_at')->title('Ngày tạo'),
-            Column::make('updated_at')->title('Ngày sửa'),
+            Column::make('add your columns'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
         ];
     }
 
@@ -90,6 +91,6 @@ class OrdersDataTable extends DataTable
     //  */
     // protected function filename()
     // {
-    //     return 'Orders_' . date('YmdHis');
+    //     return 'CreateOrder_' . date('YmdHis');
     // }
 }

@@ -1,17 +1,12 @@
 @extends('admin.layouts.admin-app')
 @section('content')
-    <style>
-        .col-lg-8 {
-            width: 100%;
-        }
-    </style>
     <div>
         <div class="row mt-4">
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
                         {{-- <a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="btn btn-primary text-white"> <i class="fas fa-image"></i> Choose </a> --}}
-                        <h5>Quản lý khách hàng</h5>
+                        <h5>{{$title}}</h5>
                     </div>
                     <div class="card-body p-3">
                         <div class="table-responsive">

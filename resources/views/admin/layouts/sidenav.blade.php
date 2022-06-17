@@ -32,8 +32,8 @@
             </li>
             <div class="collapse @if (isset($active) && $active[0] == 1) show @endif ms-3" id="collapse1">
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 2) active @endif"
-                        href="{{ route('staff.index') }}">
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 1) active @endif"
+                        href="{{ route('createorder.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-cart-plus text-success"></i>
@@ -42,8 +42,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 3) active @endif"
-                        href="{{ route('customer.index') }}">
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 2) active @endif"
+                        href="{{ route('order.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radiu s-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-scroll text-warning"></i>
