@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductType::class, 'product_type_id');
     }
+    //rating
+    public function rating()
+    {
+        return $this->hasMany(Rating::class, 'product_id');
+    }
 }

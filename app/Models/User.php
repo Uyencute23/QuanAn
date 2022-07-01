@@ -50,8 +50,26 @@ class User extends Authenticatable
     {
         return $this->hasOne(Staff::class, 'user_id');
     }
+
     public function role()
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
+    }
+
+    //get info by role_id
+    public function info()
+    {
+        if($this->role_id != 9 )
+        {
+            if($this->role_id == 1)
+            {
+                return $this->hasOne(Staff::class, 'user_id');
+            }else
+            {
+                return $this->hasOne(Customer::class, 'user_id');
+            }
+            
+        }
+       
     }
 }

@@ -8,6 +8,8 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 /*
@@ -48,6 +50,10 @@ Route::post('/updatecart', [CartDetailController::class, 'update'])->middleware(
 // Route::get('/checkout',[OrderDetailController::class,'index'])->name('checkout');
 Route::get('/checkout', [OrderDetailController::class,'index'])->middleware(['auth','customer'])->name('checkout');
 Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
+Route::post('/rating', [RatingController::class, 'store'])->name('product.rating');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
+
+
+Route::get('/news', [PostController::class, 'index'])->name('news');
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
-            $table->integer('promo_id')->unsigned();
-            $table->float('shippingfee');
-            $table->dateTime('delivery_time');
-            $table->float('total');
-            $table->string('status');
+            $table->integer('promo_id')->unsigned()->nullable();
+            $table->float('shippingfee')->default(0);
+            $table->integer('delivery_time')->default(0);
+            $table->float('total')->default(0);
+            $table->string('status')->default('Đang chờ xác nhận');
             $table->timestamps();
             $table->foreign('customer_id')
             ->references('id')

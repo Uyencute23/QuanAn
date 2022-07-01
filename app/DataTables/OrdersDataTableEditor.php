@@ -9,7 +9,7 @@ use Yajra\DataTables\DataTablesEditor;
 
 class OrdersDataTableEditor extends DataTablesEditor
 {
-    protected $model = Oder::class;
+    protected $model = Order::class;
 
     /**
      * Get create action validation rules.

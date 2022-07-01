@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('customer_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->float('rating');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->longText('content');
             $table->timestamps();
             $table->foreign('customer_id')

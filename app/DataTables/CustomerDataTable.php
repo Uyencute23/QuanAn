@@ -30,7 +30,7 @@ class CustomerDataTable extends DataTable
             })
             ->addColumn('image', function ($customer) {
                 if ($customer->img) {
-                    return '<img  src="' . $customer->img . '" width="100px" height="100px" style="object-fit: contain;">';
+                    return '<img  src="' . $customer->img . '" width="100px" height="100px" style="object-fit: cover;">';
                 } else {
                     return '<img src="https://via.placeholder.com/100x100" width="100px" height="100px">';
                 }
@@ -83,7 +83,7 @@ class CustomerDataTable extends DataTable
                 //     'className' => 'bg-success',
                 // ]
             )
-            ->select('id', 'name', 'img', 'created_at', 'updated_at')
+            ->select(true)
             ->language(config('app.datatableLanguage'));
     }
 

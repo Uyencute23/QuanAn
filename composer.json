@@ -5,26 +5,26 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.3",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.2",
+        "laravel/framework": "^8.0",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "unisharp/laravel-filemanager": "^2.5",
-        "yajra/laravel-datatables": "^9.0",
-        "yajra/laravel-datatables-buttons": "^9.0",
-        "yajra/laravel-datatables-editor": "^1.25",
-        "yajra/laravel-datatables-oracle": "^10.0"
+        "yajra/laravel-datatables": "*",
+        "yajra/laravel-datatables-buttons": "*",
+        "yajra/laravel-datatables-editor": "*",
+        "yajra/laravel-datatables-oracle": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.9",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "nunomaduro/collision": "*",
+        "phpunit/phpunit": "^9.5.10"
+
     },
     "autoload": {
         "psr-4": {

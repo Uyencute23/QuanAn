@@ -20,13 +20,7 @@ class CartController extends Controller
     public function index()
     {
         //
-        
-        $data=[
-            'active'=>0,
-            // 'detais' => Auth::user()->customer->cart->cartDetails,
-            // 'cart' => Auth::user()->customer->cart
-        ];
-        return view('pages.cart',$data);
+        return view('pages.cart');
     }
 
     /**

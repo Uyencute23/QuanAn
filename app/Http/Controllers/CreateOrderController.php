@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AdProductDataTable;
+use App\DataTables\AdProductDataTableEditor;
 use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class CreateOrderController extends Controller
@@ -12,27 +15,35 @@ class CreateOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdProductDataTable $dataTable)
     {
         //
+        
+        $type = ProductType::all();
         $data =[
             'title' => 'Tạo hoá đơn',
             'active' => [1,1],
-            // 'type' => $type,
+            'products' => Product::all(),
+            'type' => $type,
         ];
-        return view('admin.pages.createorder',$data);
+        return  $dataTable->render('admin.pages.createorder',$data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(AdProductDataTableEditor $editor)
     {
-        //
+        return $editor->process(request());
     }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.

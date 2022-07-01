@@ -5,6 +5,11 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 /*** Hero Header ***/
 .hero-header {
   background: linear-gradient(rgba(15, 23, 43, 0.8), rgba(15, 23, 43, 0.8)), url(../images/bannerhome.png);
@@ -1259,9 +1264,72 @@ Table OF Contents
 /*----------------------------*\
 	Typography
 \*----------------------------*/
+.rating-avg .rating-stars {
+  margin-left: 10px;
+}
+
+.rating-avg .rating-stars,
+.rating .rating-stars {
+  display: inline-block;
+}
+
+.rating-avg .rating-stars > i,
+.rating .rating-stars > i {
+  color: #616265;
+}
+
+.rating-avg .rating-stars > i.fa-star,
+.rating .rating-stars > i.fa-star {
+  font-weight: 900;
+  color: #d10024;
+}
+.rating-avg .rating-stars > i.fa-star-half-alt,
+.rating .rating-stars > i.fa-star-half-alt {
+  
+  color: #d10024;
+}
+
+.review-form .input-rating .stars {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.review-form .input-rating .stars input[type="radio"] {
+  display: none;
+}
+
+.review-form .input-rating .stars > label {
+  float: right;
+  cursor: pointer;
+  padding: 0px 3px;
+  margin: 0px;
+}
+
+.review-form .input-rating .stars > label:before {
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  color: #292a2a;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.review-form .input-rating .stars > label:hover:before,
+.review-form .input-rating .stars > label:hover ~ label:before {
+  font-weight: 900;
+  color: #d10024;
+}
+
+.review-form .input-rating .stars > input:checked label:before,
+.review-form .input-rating .stars > input:checked ~ label:before {
+  font-weight: 900;
+  content: "\f005";
+  color: #d10024;
+}
+
 
 body {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
   font-weight: 400;
   color: #333;
 }
@@ -2650,7 +2718,7 @@ Store
 .b-h {
  margin-top: 100px;
  font-size: 25px;
- font-family:"Montserrat", sans-serif;
+ /* font-family:"Montserrat", sans-serif; */
  text-align: justify;
 }
 .add-cart{

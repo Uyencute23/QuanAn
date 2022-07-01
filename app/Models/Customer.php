@@ -22,4 +22,13 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
+    public function order()
+    {
+        return $this->hasMany(Order::class,'customer_id');
+    }
+    //get hasmanythrough order_detail
+    public function order_detail()
+    {
+        return $this->hasManyThrough(OrderDetail::class,Order::class,'customer_id','order_id','id','id');
+    }
 }

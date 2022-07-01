@@ -84,8 +84,7 @@ class StaffDataTable extends DataTable
                 //     'className' => 'bg-primary',
                 // ]
             )
-            ->select('id', 'name', 'img', 'phone', 'created_at', 'updated_at')
-           
+            ->select(true)
             ->language(config('app.datatableLanguage'));
     }
 

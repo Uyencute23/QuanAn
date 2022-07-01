@@ -20,11 +20,26 @@ class Order extends Model
     ];
     public function customer()
     {
-        return $this->belongsTo(Customer::class,'customer_id');
+        return $this->belongsTo(Customer::class,'customer_id')->with('user');
     }
-    public function user()
+    public function order_detail()
     {
-        return $this->belongsTo(User::class,'customer_id');
+        return $this->hasMany(OrderDetail::class,'order_id');
+    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class,'customer_id');
+    // }
+
+    //order belongtoMany user
+    // public function user()
+    // {
+    //     return $this->hasOneThrough(User::class,Customer::class,'id','id','id','user_id');
+    // }
+    public function promo()
+    {
+            return $this->belongsTo(Promotion::class,'promo_id');
+      
     }
     
 }

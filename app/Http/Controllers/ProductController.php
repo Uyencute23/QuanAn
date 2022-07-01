@@ -57,7 +57,13 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        return view('pages.product-detail', ['product'=> Product::find($id),'active'=>1]);
+        $data = [
+            'active'=>1,
+            'title' => 'Chi tiết món ăn',
+            'product' => Product::find($id),
+            'rating' => Product::find($id)->rating,
+        ];
+        return view('pages.product-detail', $data);
 
 
     }

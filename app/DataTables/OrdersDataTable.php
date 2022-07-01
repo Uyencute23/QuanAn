@@ -20,8 +20,38 @@ class OrdersDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query->with('user','customer'))
-            ->setrowId('id');
+            ->eloquent($query->with('customer', 'promo'))
+            ->setrowId('id')
+            ->editColumn('c_shippingfee', function ($order) {
+                return number_format($order->shippingfee, 0, ',', '.') . 'đ';
+            })
+            ->editColumn('c_total', function ($order) {
+                return number_format($order->total, 0, ',', '.') . 'đ';
+            })
+            ->addColumn('user', function ($order) {
+                return  $order->customer->user->name;
+            })
+            ->addColumn('promo_name', function ($order) {
+                if ($order->promo_id) {
+                    return $order->promo->name;
+                } else {
+                    return 'Không';
+                }
+            })
+            ->addColumn('details', function ($order) {
+                return '<a href="' . route('order.show', $order->id) . '" class="btn btn-primary btn-sm">Chi tiết</a>';
+            })
+            ->editColumn('created_at', function ($customer) {
+                if ($customer->created_at) {
+                    return $customer->created_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->editColumn('updated_at', function ($customer) {
+                if ($customer->updated_at) {
+                    return $customer->updated_at->format('d/m/Y H:i:s');
+                }
+            })
+            ->rawColumns(['details']);
     }
 
     /**
@@ -51,7 +81,7 @@ class OrdersDataTable extends DataTable
             ->buttons(
                 Button::make('create')->editor('editor'),
                 Button::make('edit')->editor('editor'),
-                Button::make('remove')->editor('editor'),
+                // Button::make('remove')->editor('editor'),
                 // Button::make('print')->text('In'),
                 Button::make('colvis')->text('Cột'),
                 // Button::make('export'),
@@ -59,7 +89,7 @@ class OrdersDataTable extends DataTable
                 // Button::make('reset'),
                 // Button::make('reload')
             )
-            ->select('id','created_at', 'updated_at')
+            ->select('id', 'created_at', 'updated_at')
             ->language(config('app.datatableLanguage'));;
     }
 
@@ -71,15 +101,18 @@ class OrdersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('user.name')->title('Khách hàng'),
-            Column::make('promo_id')->title('Mã khuyến mãi'),
-            Column::make('shippingfee')->title('Phí vận chuyển'),
-            Column::make('delivery_time')->title('Thời gian giao hàng'),
-            Column::make('toltal')->title('Tổng tiền'),
-            Column::make('status')->title('Trạng thái'),
-            Column::make('created_at')->title('Ngày tạo'),
-            Column::make('updated_at')->title('Ngày sửa'),
+            Column::make('id')->className('text-center'),
+            Column::make('user')->title('Khách hàng')->className('text-center'),
+            Column::make('status')->title('Trạng thái')->className('text-center'),
+            Column::make('promo_name')->title('Mã khuyến mãi')->className('text-center'),
+            Column::make('c_total')->title('Tổng tiền')->className('text-center'),       
+            Column::make('delivery_time')->title('Thời gian giao hàng')->className('text-center'),
+            Column::make('c_shippingfee')->title('Phí vận chuyển')->className('text-center'),
+            Column::make('created_at')->title('Ngày tạo')->className('text-center'),
+            Column::make('updated_at')->title('Ngày sửa')->className('text-center'),
+            Column::computed('details')->title('Chi tiết')->className('text-center'),
+            Column::make('total')->title('Tổng tiền')->className('text-center')->searchable(true)->visible(false)->title(''),
+            Column::make('shippingfee')->title('Phí vận chuyển')->className('text-center')->searchable(true)->visible(false)->title(''),
         ];
     }
 

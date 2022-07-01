@@ -22,7 +22,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link producttype" data-bs-toggle="collapse" href="#collapse1" aria-expanded="@if (isset($active) && $active[0] == 1){{'true'}}@else{{'false'}}  @endif"
+                <a class="nav-link producttype" data-bs-toggle="collapse" href="#collapse1"
+                    aria-expanded="@if (isset($active) && $active[0] == 1) {{ 'true' }}@else{{ 'false' }} @endif"
                     aria-controls="collapse1">
                     <div class="producttype text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-shopping-cart"></i>
@@ -32,7 +33,7 @@
             </li>
             <div class="collapse @if (isset($active) && $active[0] == 1) show @endif ms-3" id="collapse1">
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 1) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1] == 1) active @endif"
                         href="{{ route('createorder.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -42,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1]== 2) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 1 && $active[1] == 2) active @endif"
                         href="{{ route('order.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radiu s-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -52,7 +53,7 @@
                     </a>
                 </li>
                 {{-- <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 4) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[1] == 4) active @endif"
                         href="{{ route('product.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -62,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 5) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[1] == 5) active @endif"
                         href="{{ route('product-type.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -72,7 +73,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 6) active @endif" href="{{ route('user.index') }}">
+                    <a class="nav-link  @if (isset($active) && $active[1] == 6) active @endif" href="{{ route('user.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-user-friends    "></i>
@@ -82,7 +83,8 @@
                 </li> --}}
             </div>
             <li class="nav-item">
-                <a class="nav-link producttype" data-bs-toggle="collapse" href="#collapseTables" aria-expanded="@if (isset($active) && $active[0] == 2){{'true'}}@else{{'false'}}  @endif"
+                <a class="nav-link producttype" data-bs-toggle="collapse" href="#collapseTables"
+                    aria-expanded="@if (isset($active) && $active[0] == 2) {{ 'true' }}@else{{ 'false' }} @endif"
                     aria-controls="collapseTables">
                     <div class="producttype text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-table"></i>
@@ -91,9 +93,9 @@
                 </a>
             </li>
             <div class="collapse @if (isset($active) && $active[0] == 2) show @endif ms-3" id="collapseTables">
-                
+
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 4) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 2 && $active[1] == 4) active @endif"
                         href="{{ route('product.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -103,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 5) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 2 && $active[1] == 5) active @endif"
                         href="{{ route('product-type.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -112,18 +114,20 @@
                         <span class="nav-link-text ms-1">Danh mục món ăn</span>
                     </a>
                 </li>
+                @if (Auth::user()->role_id == 9)
+                    <li class="nav-item">
+                        <a class="nav-link  @if (isset($active) && $active[0] == 2 && $active[1] == 2) active @endif"
+                            href="{{ route('staff.index') }}">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="fas fa-user-shield text-info"></i>
+                            </div>
+                            <span class="nav-link-text ms-1 ">Quản lý nhân viên</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active) && $active[1]== 2) active @endif"
-                        href="{{ route('staff.index') }}">
-                        <div
-                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-user-shield text-info"></i>
-                        </div>
-                        <span class="nav-link-text ms-1 ">Quản lý nhân viên</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 3) active @endif"
+                    <a class="nav-link  @if (isset($active) && $active[0] == 2 && $active[1] == 3) active @endif"
                         href="{{ route('customer.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -133,7 +137,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  @if (isset($active)&& $active[0] == 2 && $active[1]== 6) active @endif" href="{{ route('user.index') }}">
+                    <a class="nav-link  @if (isset($active) && $active[0] == 2 && $active[1] == 6) active @endif"
+                        href="{{ route('user.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-user-friends    "></i>
@@ -142,8 +147,8 @@
                     </a>
                 </li>
             </div>
-            
-            
+
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
@@ -156,16 +161,26 @@
                     <span class="nav-link-text ms-1">Profile</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link " href="../pages/sign-in.html">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                     this.closest('form').submit();">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-sign-out-alt text-warning" ></i>
+                        </div>
+
+                        <span class="nav-link-text ms-1">Đăng xuất</span>
+                    </a>
+                </form>
+
             </li>
-            <li class="nav-item">
+
+            {{-- <li class="nav-item">
                 <a class="nav-link " href="../pages/sign-up.html">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -173,8 +188,8 @@
                     </div>
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
-   
+
 </aside>

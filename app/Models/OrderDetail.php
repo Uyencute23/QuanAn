@@ -14,4 +14,16 @@ class OrderDetail extends Model
         'quantity',
         'total',
     ];
+
+    //product belongtoMany order
+    public function product()
+    {
+        return $this->belongsTo(Product::class,'product_id');
+    }
+    //order belongtoMany order
+    public function order()
+    {
+        return $this->belongsTo(Order::class,'order_id');
+    }
+    
 }

@@ -20,6 +20,12 @@ class CustomerController extends Controller
         ];
         return $dataTable->render('admin.pages.customer',$data);
     }
+    //show all
+    public function showAll()
+    {
+        $customers = Customer::all();
+        return response()->json($customers);
+    }
     public function store(CustomerDataTableEditor $editor)
     {
         return $editor->process(request());

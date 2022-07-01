@@ -25,7 +25,7 @@
             <div class="col-lg-5">
                 <!--SHIPPING METHOD-->
                 <div class="panel panel-info">
-                    <div class="panel-heading">THÔNG TIN GIAO HÀNG</div>
+                    <h3 class="text-center mb-3">THÔNG TIN GIAO HÀNG</h3>
                     <div class="panel-body">
                         {{-- <div class="form-group">
                                 <div class="col-md-12">
@@ -39,34 +39,31 @@
                                 </div>
                             </div> --}}
                         <div class="form-group">
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Họ:</strong>
-                                <input type="text" name="first_name" class="form-control" value="" />
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                                <strong>Tên:</strong>
-                                <input type="text" name="last_name" class="form-control" value="" />
+                            <div class=" col-md-12">
+                                <strong>Họ và tên:</strong>
+                                <input type="text" disabled name="first_name" class="form-control"
+                                    value="{{ Auth::user()->name }}" />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12"><strong>Địa Chỉ:</strong></div>
                             <div class="col-md-12">
-                                <input type="text" name="address" class="form-control" value="" />
+                                <input type="text" name="address" class="form-control"
+                                    value="@if (Auth::user()->customer->address) {{ Auth::user()->customer->address }} @endif" />
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div class="col-md-12"><strong>Thành Phố:</strong></div>
                             <div class="col-md-12">
                                 <input type="text" name="city" class="form-control" value="" />
                             </div>
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <div class="col-md-12"><strong>Trạng thái:</strong></div>
                             <div class="col-md-12">
                                 <input type="text" name="state" class="form-control" value="Đang giao hàng" disabled />
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
@@ -76,19 +73,21 @@
                         <div class="form-group">
                             <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                             <div class="col-md-12"><input type="text" name="phone_number" class="form-control"
-                                    value="" /></div>
+                                    value="@if (Auth::user()->customer->phone) {{ Auth::user()->customer->phone }} @endif" />
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12"><strong>Email:</strong></div>
-                            <div class="col-md-12"><input type="text" name="email_address" class="form-control"
-                                    value="" /></div>
+                            <div class="col-md-12"><input type="text" name="email" class="form-control"
+                                    value="@if (Auth::user()->email) {{ Auth::user()->email }} @endif" /></div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12"><strong>Ghi chú:</strong></div>
-                            <div class="col-md-12"><input type="text" name="email_address" class="form-control"
-                                    value="" /></div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <div class="col-md-12"><strong>Hình thức giao hàng:</strong></div>
                             <div class="col-md-12">
                                 <select id="CreditCardType" name="CreditCardType" class="form-control">
@@ -96,7 +95,7 @@
                                     <option value="6">Thanh toán bằng thẻ ngân hàng</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -192,10 +191,8 @@
             <div class="col-lg-7">
                 <!--REVIEW ORDER-->
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        THÔNG TIN SẢN PHẨM <div class="pull-right"><small><a class="afix-1" href="#">Edit
-                                    Cart</a></small></div>
-                    </div>
+                    <h3 class="text-center mb-3">THÔNG TIN SẢN PHẨM</h3>
+                    <hr>
                     <div class="panel-body">
                         @foreach ($detais as $detail)
                             <div class="row">
@@ -204,9 +201,9 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">
-                                        <h4 class="font-weight-bold">{{ $detail->product->name }}</h4>
+                                        <h5 class="font-weight-bold">{{ $detail->product->name }}</h5>
                                     </div>
-                                    <div class="col-xs-12 h4">Số
+                                    <div class="col-xs-12 h6">Số
                                         lượng:<span>{{ $detail->quantity }}</span>
                                     </div>
                                 </div>
@@ -220,36 +217,41 @@
                     </div>
                     <div class="row">
                         <div class="col-7">
+                            <span class="text-secondary"> Lưu ý: Mỗi đơn hàng chỉ áp dụng được 1 voucher.</span>
                             <div class="row p-3 ml-3">
-                                <div class="col-3">
-                                    <p class='h5 font-weight-bold'>Voucher:</p>
-                                </div>
-                                <div class="col-8">
-                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                        @foreach ($promo as $p)
-                                            <option value="{{ $p->id }}">
-                                                {{ mb_strimwidth($p->name, 0, 50, '...') }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <h6 class=' font-weight-bold'>Voucher:</h6>
+                                <input class="ml-2" id="voucher" style="width: 130px; border:1px solid;border-radius: 5px"
+                                    type="text">
+
+                                <button class="btn btn-primary ml-2" style="border-radius: 5px" onclick="apply()">Áp dụng</button>
                             </div>
+                           
                         </div>
-                        <div class="col">
-                            <div class="col-xs-12">
-                                <h4> <b> Tổng Tiền:</b> {{ number_format($cart->total, 0, ',', '.') }}đ</h4>
-                            </div>
-                        </div>
+                        @livewire('totalcheckout')
                     </div>
                 </div>
 
                 <div class="row" style="text-align: center;background:">
 
 
-                    <div class="col"> <button class="btc">TIẾP TỤC MUA HÀNG</button></div>
-                    <div class="col"> <button class="btc">ĐẶT HÀNG </button></div>
+                    <div class="col">
+                        <a href="{{ route('home') }}" type="button" class="btn btn-secondary">
+                            TIẾP TỤC MUA HÀNG
+                        </a>
+                    </div>
+                    <div class="col"> <button class="btn btn-danger">ĐẶT HÀNG </button></div>
                 </div>
                 <!--REVIEW ORDER END-->
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    function apply() {
+        console.log('apply');
+        console.log($('#voucher').val());
+        livewire.emit('total', $('#voucher').val());
+        livewire.emit('refreshTotal');
+    }
+</script>

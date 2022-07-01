@@ -43,8 +43,6 @@ class CartDetailController extends Controller
         $sp = Product::find($request->product_id);
         if ($sp) {
             $current = CartDetail::where('cart_id', "=", Auth::user()->customer->cart->id)->where('product_id', '=', $sp->id)->first();
-            // dd($current);
-            // return response(['success' => $current,'sp'=>Auth::user()->customer->cart->id], 200);
             if ($current == null) {
                 $cartdetail = new CartDetail();
                 $cartdetail->cart_id = Auth::user()->customer->cart->id;
@@ -60,9 +58,8 @@ class CartDetailController extends Controller
                     return response()->json(['success' => $current], 200);
             }
 
-            return response()->json(['fail' => 'không thành công,sản phẩm đã có trong giỏ']);
+            return response()->json(['fail' => 'không thành công']);
         }
-        // }
     }
 
     /**

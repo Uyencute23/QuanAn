@@ -40,20 +40,20 @@
                         <a class="nav-link" href="{{ route('menu') }}">THỰC ĐƠN</a>
                     </li>
 
-                   @if (isset($active) && $active == 4)
+                   {{-- @if (isset($active) && $active == 4)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
                     @endif
                         <a class="nav-link" href="{{ route('promo') }}">KHUYẾN MÃI</a>
-                    </li>
+                    </li> --}}
 
                    @if (isset($active) && $active == 5)
                        <li class="nav-item active"> 
                     @else
                         <li class="nav-item">
                     @endif
-                        <a class="nav-link" href="book.html">TIN TỨC &nbsp;&nbsp;</a>
+                        <a class="nav-link"  href="{{ route('news') }}">TIN TỨC &nbsp;&nbsp;</a>
                     </li>
 
                 </ul>

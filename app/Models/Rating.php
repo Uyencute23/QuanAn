@@ -15,4 +15,10 @@ class Rating extends Model
         'content',
         'img',
     ];
+
+    //customer
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }

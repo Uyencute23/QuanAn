@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
 
         $users = [
-            ['Admin', '12345678', 'admin@gmail.com','1'],
-        	['Trần Thị Xuân', '12345678', 'Xuãnuan9x@gmail.com','2'],
-            ['Trần Thị Hoài Hương', '12345678', 'hoaahuong@gmail.com','2'],
+            ['Admin', '12345678', 'admin@gmail.com','9'],
+            ['Nhân viên', '12345678', 'staff@gmail.com','1'],
+        	['Khách bán lẻ', '12345678', 'client@gmail.com','2'], 
             ['Hà Tùng Lâm','12345678','Tunglam9x@gmail.com','2'], 
             ['Hà thu Hiền', '12345678', 'Hienha@gmail.com','2'], 
             ['Trần Thị Thanh', '12345678', 'Thanh9x@gmail.com','2'], 

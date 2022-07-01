@@ -18,9 +18,36 @@
             </div>
         </div>
     </div>
+    <div style="display: none">
+        <div id="customForm">
+            <fieldset>
+                <div data-editor-template="name"></div>
+            </fieldset>
+
+            <fieldset>
+                <label data-dte-e="label" class="col-lg-4 col-form-label" for="DTE_Field_img">Hình ảnh:
+                    <div data-dte-e="msg-label" class="DTE_Label_Info"></div>
+                </label>
+                <div class="row btn-lfm">
+                    <div class="col-3">
+                        <a id="lfm" style="width: 120px; height: 40px;" data-input="DTE_Field_img"
+                            data-preview="holder" class="lfm btn btn-primary text-white"> <i class="fas fa-image"></i>Chọn
+                            ảnh</a>
+                    </div>
+                    <div class="col" data-editor-template="img"></div>
+                    <div id="holder" style="margin-top:15px;max-height:200px;display: none"><img style="height: 12rem;">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="hr">
+                <div data-editor-template="description"></div>
+            </fieldset>
+        </div>
+    </div>
     @push('scripts_admin')
         <script>
             $(function() {
+                $('#lfm').filemanager('image');
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -30,9 +57,10 @@
                 var editor = new $.fn.dataTable.Editor({
                     ajax: 'product-type',
                     table: "#producttype-table",
+                    template: '#customForm',
                     display: 'bootstrap',
                     fields: [{
-                            label: "Tên món ăn",
+                            label: "Tên danh mục",
                             name: "name",
                             type: "text",
 
@@ -41,55 +69,16 @@
                             label: "Hình ảnh",
                             name: "img",
                             type: "text",
-                            // clearText: "Hủy bỏ",
-                            // noImageText: 'Không có hình ảnh',
+                        
                         },
-                        // {
-                        //     label: "Giá",
-                        //     name: "price",
-                        //     attr: {
-                        //         type: 'number'
-                        //     }
-                        // },
-                        // {
-                        //     label: "Loại món ăn",
-                        //     name: "producttype_type_id",
-                        //     type: "select",
-                        //     // placeholder: "Tên Vắc-xin",
-                        //     options: [
-                        //         @foreach ($type as $t)
-                        //             {
-                        //                 label: "{{ $t->name }}",
-                        //                 value: "{{ $t->id }}"
-                        //             },
-                        //         @endforeach
-                        //     ]
-
-
-                        // },
+                       
                         {
                             label: "Mô tả",
                             name: "description",
                             type: "textarea",
 
                         },
-                        // {
-                        //     label: "Nhập lại mật khẩu",
-                        //     name: "password_confirmation",
-                        // },
-                        // {
-                        //     label: "Ngày bắt đầu",
-                        //     name: "date_time",
-                        //     type: "datetime",
-                        //     def: function() {
-                        //         return new Date();
-                        //     },
-                        //     format: 'YYYY-MM-DD HH:mm:ss',
-                        //     opts: {
-                        //         minutesIncrement: 5
-                        //     }
-
-                        // }
+                       
                     ],
                     i18n: {
                         create: {
@@ -112,20 +101,15 @@
 
                     }
                 });
-                // $('#schedule-table').on('click', 'tbody td:not(:first-child)', function(e) {
-                //     editor.inline(this);
-                // });
+
                 {{ $dataTable->generateScripts() }}
-                $('<a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-primary text-white" onclick="lfm()"> <i class="fas fa-image"></i>Chọn ảnh</a>')
-                    .insertBefore(
-                        editor.field('img').input()
-                    );
+                setImgHolder(editor)
 
             });
 
-            function lfm() {
-                $('#lfm').filemanager('image');
-            }
+
+               
+
         </script>
     @endpush
 @endsection
