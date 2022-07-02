@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cart;
+use App\Models\Customer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -20,15 +21,11 @@ class CartSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('carts')->truncate();
 
-        $carts = [
-        
-        ];
-
-        foreach ($carts as $cart) {
+        foreach (Customer::all() as $customer) {
            Cart::create([
-                'customer_id'=> $cart[0],
-                'quantity' => $cart[1],
-                'total' => $cart[2],
+                'customer_id'=> $customer->id,
+                'quantity' => 0,
+                'total' => 0,
             ]);
         }
 

@@ -101,7 +101,7 @@
                             }
                         },
                         {
-                            label: "Thời gian giao hàng",
+                            label: "Thời gian giao hàng (phút)",
                             name: "delivery_time",
                             attr: {
                                 type: 'number'

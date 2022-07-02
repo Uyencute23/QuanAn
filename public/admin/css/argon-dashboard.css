@@ -1673,10 +1673,10 @@ progress {
     width: 25%;
   }
 
-  .col-lg-4 {
+  /* .col-lg-4 {
     flex: 0 0 auto;
     width: 33.333333%;
-  }
+  } */
 
   .col-lg-5 {
     flex: 0 0 auto;
@@ -20753,7 +20753,7 @@ fieldset:disabled .btn {
   .dropstart .dropdown-toggle:after,
   .dropend .dropdown-toggle:after {
     content: "\f107";
-    font: normal normal normal 14px/1 FontAwesome;
+    font: normal normal normal 14px/1 Font Awesome 5 Free;
     border: none;
     vertical-align: middle;
     font-weight: 600;
@@ -20812,7 +20812,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0d8";
     position: absolute;
     top: 0;
@@ -20848,7 +20848,7 @@ fieldset:disabled .btn {
   }
 
   .navbar-toggler+.navbar-collapse .dropdown:not(.nav-item) .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0d8";
     position: absolute;
     top: 0;
@@ -20893,7 +20893,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0d8";
     position: absolute;
     top: 0;
@@ -21056,7 +21056,7 @@ fieldset:disabled .btn {
 }
 
 .dropup .dropdown-menu:after {
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Free";
   content: "\f0d7";
   position: absolute;
   z-index: -1;
@@ -21228,7 +21228,7 @@ fieldset:disabled .btn {
 
 .form-check:not(.form-switch) .form-check-input[type="checkbox"]:after {
   transition: opacity 0.25s ease-in-out;
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Free";
   content: "\f00c";
   width: 100%;
   height: 100%;
@@ -22093,7 +22093,7 @@ hr.horizontal.gray-light {
 
 @media (min-width: 992px) {
   :not(.main-content) .navbar .dropdown .dropdown-menu {
-    top: 2.25rem !important;
+    /* top: 2.25rem !important; */
   }
 
   :not(.main-content) .navbar .dropdown .dropdown-menu .dropdown .dropdown-menu {

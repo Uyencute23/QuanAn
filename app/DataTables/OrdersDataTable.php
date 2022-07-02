@@ -76,7 +76,7 @@ class OrdersDataTable extends DataTable
             ->setTableId('orders-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrtip')
+            ->dom('lBfrtip')
             ->orderBy(1)
             ->buttons(
                 Button::make('create')->editor('editor'),
@@ -89,7 +89,7 @@ class OrdersDataTable extends DataTable
                 // Button::make('reset'),
                 // Button::make('reload')
             )
-            ->select('id', 'created_at', 'updated_at')
+            ->select(true)
             ->language(config('app.datatableLanguage'));;
     }
 

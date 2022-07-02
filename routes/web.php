@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OrderEvent;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RatingController;
@@ -52,8 +55,10 @@ Route::get('/checkout', [OrderDetailController::class,'index'])->middleware(['au
 Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
 Route::post('/rating', [RatingController::class, 'store'])->name('product.rating');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
-
+Route::post('/create-order', [CheckOutController::class, 'store'])->name('checkout.create');
 
 Route::get('/news', [PostController::class, 'index'])->name('news');
+
+Route::get('/pusher/{message}',[OrderController::class,'sendMessage'])->name('pusher');
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

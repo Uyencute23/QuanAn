@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chicken Cool</title>
-    
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.css') }}" />
 
@@ -28,13 +28,28 @@
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet" />
-    
+
     @livewireStyles
     {{-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
-  
-   
+
+    <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('65ca50a4815ec7201ae8', {
+            cluster: 'ap1'
+        });
+
+        var channel = pusher.subscribe('order-channel');
+        channel.bind('my-event', function(data) {
+            if (data.message.client) {
+                alert(data.message.client);
+            }
+        });
+    </script>
 </head>
 
 <body>

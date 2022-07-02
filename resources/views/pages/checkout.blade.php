@@ -20,174 +20,6 @@
                 </div>
             </div> --}}
         <div class="row cart-body">
-
-
-            <div class="col-lg-5">
-                <!--SHIPPING METHOD-->
-                <div class="panel panel-info">
-                    <h3 class="text-center mb-3">THÔNG TIN GIAO HÀNG</h3>
-                    <div class="panel-body">
-                        {{-- <div class="form-group">
-                                <div class="col-md-12">
-                                    <h4>Shipping Address</h4>
-                                </div>
-                            </div> --}}
-                        {{-- <div class="form-group">
-                                <div class="col-md-12"><strong>Country:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" value="" />
-                                </div>
-                            </div> --}}
-                        <div class="form-group">
-                            <div class=" col-md-12">
-                                <strong>Họ và tên:</strong>
-                                <input type="text" disabled name="first_name" class="form-control"
-                                    value="{{ Auth::user()->name }}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Địa Chỉ:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="address" class="form-control"
-                                    value="@if (Auth::user()->customer->address) {{ Auth::user()->customer->address }} @endif" />
-                            </div>
-                        </div>
-                        {{-- <div class="form-group">
-                            <div class="col-md-12"><strong>Thành Phố:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="city" class="form-control" value="" />
-                            </div>
-                        </div> --}}
-                        {{-- <div class="form-group">
-                            <div class="col-md-12"><strong>Trạng thái:</strong></div>
-                            <div class="col-md-12">
-                                <input type="text" name="state" class="form-control" value="Đang giao hàng" disabled />
-                            </div>
-                        </div> --}}
-                        {{-- <div class="form-group">
-                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" name="zip_code" class="form-control" value="" />
-                                </div>
-                            </div> --}}
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Số điện thoại:</strong></div>
-                            <div class="col-md-12"><input type="text" name="phone_number" class="form-control"
-                                    value="@if (Auth::user()->customer->phone) {{ Auth::user()->customer->phone }} @endif" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Email:</strong></div>
-                            <div class="col-md-12"><input type="text" name="email" class="form-control"
-                                    value="@if (Auth::user()->email) {{ Auth::user()->email }} @endif" /></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Ghi chú:</strong></div>
-                            <div class="col-md-12">
-                                <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
-                            </div>
-                        </div>
-                        {{-- <div class="form-group">
-                            <div class="col-md-12"><strong>Hình thức giao hàng:</strong></div>
-                            <div class="col-md-12">
-                                <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                    <option value="5">Thanh toán bằng tiền mặt</option>
-                                    <option value="6">Thanh toán bằng thẻ ngân hàng</option>
-                                </select>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-
-                <!--SHIPPING METHOD END-->
-                <!--CREDIT CART PAYMENT-->
-                {{-- <div class="panel panel-info">
-                    <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span> PHƯƠNG THỨC THANH
-                        TOÁN</div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Card Type:</strong></div>
-                            <div class="col-md-12">
-                                <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                    <option value="5">Visa</option>
-                                    <option value="6">MasterCard</option>
-                                    <option value="7">American Express</option>
-                                    <option value="8">Discover</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                            <div class="col-md-12"><input type="text" class="form-control" name="car_number"
-                                    value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12"><strong>Card CVV:</strong></div>
-                            <div class="col-md-12"><input type="text" class="form-control" name="car_code"
-                                    value="" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <strong>Expiration Date</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="">
-                                    <option value="">Month</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="">
-                                    <option value="">Year</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <span>Pay secure using your credit card.</span>
-                            </div>
-                            <div class="col-md-12">
-                                <ul class="cards">
-                                    <li class="visa hand">Visa</li>
-                                    <li class="mastercard hand">MasterCard</li>
-                                    <li class="amex hand">Amex</li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <button type="submit" class="btn btn-primary btn-submit-fix">Place Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                <!--CREDIT CART PAYMENT END-->
-            </div>
             <div class="col-lg-7">
                 <!--REVIEW ORDER-->
                 <div class="panel panel-info">
@@ -220,38 +52,219 @@
                             <span class="text-secondary"> Lưu ý: Mỗi đơn hàng chỉ áp dụng được 1 voucher.</span>
                             <div class="row p-3 ml-3">
                                 <h6 class=' font-weight-bold'>Voucher:</h6>
-                                <input class="ml-2" id="voucher" style="width: 130px; border:1px solid;border-radius: 5px"
-                                    type="text">
+                                <input class="ml-2" id="voucher" name="promo_id"
+                                    style="width: 130px; border:1px solid;border-radius: 5px" type="text">
 
-                                <button class="btn btn-primary ml-2" style="border-radius: 5px" onclick="apply()">Áp dụng</button>
+                                <button class="btn btn-primary ml-2" style="border-radius: 5px" onclick="apply()">Áp
+                                    dụng</button>
                             </div>
-                           
+
                         </div>
                         @livewire('totalcheckout')
                     </div>
                 </div>
 
-                <div class="row" style="text-align: center;background:">
-
-
+                <div class="row" >
                     <div class="col">
                         <a href="{{ route('home') }}" type="button" class="btn btn-secondary">
                             TIẾP TỤC MUA HÀNG
                         </a>
                     </div>
-                    <div class="col"> <button class="btn btn-danger">ĐẶT HÀNG </button></div>
+                    {{-- <div class="col"> <button class="btn btn-danger" type="submit">ĐẶT HÀNG </button></div> --}}
                 </div>
                 <!--REVIEW ORDER END-->
             </div>
+
+            <div class="col-lg-5">
+                <!--SHIPPING METHOD-->
+                <div class="panel panel-info">
+                    <h3 class="text-center mb-3">THÔNG TIN GIAO HÀNG</h3>
+                    <div class="panel-body">
+                        {{-- <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>Shipping Address</h4>
+                                </div>
+                            </div> --}}
+                        {{-- <div class="form-group">
+                                <div class="col-md-12"><strong>Country:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="country" value="" />
+                                </div>
+                            </div> --}}
+                        <form id="check-out" action="">
+                            @csrf
+                            <div class="form-group">
+                                <div class=" col-md-12">
+                                    <strong>Họ và tên:</strong>
+                                    <input name="name_u" type="text" disabled class="form-control"
+                                        value="{{ Auth::user()->name }}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Địa Chỉ:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="address_u" maxlength="150" class="form-control"
+                                        value="@if (Auth::user()->customer->address) {{ Auth::user()->customer->address }} @endif"
+                                        required />
+                                </div>
+                                
+                            </div>
+                            {{-- <div class="form-group">
+                            <div class="col-md-12"><strong>Thành Phố:</strong></div>
+                            <div class="col-md-12">
+                                <input type="text" name="city" class="form-control" value="" />
+                            </div>
+                        </div> --}}
+                            {{-- <div class="form-group">
+                            <div class="col-md-12"><strong>Trạng thái:</strong></div>
+                            <div class="col-md-12">
+                                <input type="text" name="state" class="form-control" value="Đang giao hàng" disabled />
+                            </div>
+                        </div> --}}
+                            {{-- <div class="form-group">
+                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                </div>
+                            </div> --}}
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Số điện thoại:</strong></div>
+                                <div class="col-md-12"><input type="tel" minlength="10" maxlength="11" name="phone_u" class="form-control"
+                                        value="@if (Auth::user()->customer->phone) {{ Auth::user()->customer->phone }} @endif"
+                                        required />
+                                </div>
+                                {{-- error message --}}
+                                <div class="col-md-12 text-danger mt-2" style="display: none" id="error_phone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Email:</strong></div>
+                                <div class="col-md-12"><input type="text" name="email_u" class="form-control" disabled
+                                        value="@if (Auth::user()->email) {{ Auth::user()->email }} @endif" />
+                                </div>
+                            </div>
+                            {{-- <div class="form-group">
+                            <div class="col-md-12"><strong>Ghi chú:</strong></div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                            </div>
+                        </div> --}}
+                            {{-- <div class="form-group">
+                            <div class="col-md-12"><strong>Hình thức giao hàng:</strong></div>
+                            <div class="col-md-12">
+                                <select id="CreditCardType" name="CreditCardType" class="form-control">
+                                    <option value="5">Thanh toán bằng tiền mặt</option>
+                                    <option value="6">Thanh toán bằng thẻ ngân hàng</option>
+                                </select>
+                            </div>
+                        </div> --}}
+                            <button class="btn btn-danger ml-3" type="submit">ĐẶT HÀNG </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--SHIPPING METHOD END-->
+
+            </div>
+
         </div>
     </div>
 @endsection
 @push('scripts')
-<script>
-    function apply() {
-        console.log('apply');
-        console.log($('#voucher').val());
-        livewire.emit('total', $('#voucher').val());
-        livewire.emit('refreshTotal');
-    }
-</script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('submit', '#check-out', function() {
+                // alert($('input[name="promo_id"]').val())
+                let id = '{{ Auth::user()->customer->id }}';
+                //coutn $detais
+                let count = {{ count($detais) }};
+                if (count == 0) {
+                    alert('Bạn chưa có sản phẩm nào');
+                    return false;
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('checkout.create') }}',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            customer_id: id,
+                            address: $('input[name="address_u"]').val(),
+                            phone: $('input[name="phone_u"]').val(),
+                            promo_id: $('input[name="promo_id"]').val(),
+                        },
+                        success: function(data) {
+                            // if (data.success) {      
+                            // }
+                            alert(data.success)
+                            console.log(data);
+                            window.location.href = '{{ route('home') }}';
+                            // location.reload();
+                        },
+                        error: function(er) {
+                            // alert(er.responseJSON.message)
+                            if (er.responseJSON.errors.phone) {
+                                //set text error
+                                $('#error_phone').text('Số điện thoại không hợp lệ');
+                                $('#error_phone').show();
+                                
+                            }
+                            console.log(er)
+                            // if (er.status == 422) {
+                            //     $('#error_message').html('Tài khoản hoặc mật khẩu không đúng!')
+                            // }
+                        }
+
+                    });
+                }
+                console.log('{{ route('customer.store') }}')
+                return false;
+            });
+            //submit form and create order
+            // $(document).on('submit', '#check-out', function() {
+            //     {
+            //         alert('Đặt hàng thành công');
+            //         // $('#error_message').html('')
+            //         let id = '{{ Auth::user()->customer->id }}';
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: '{{ route('customer.store') }}',
+            //             data: {
+            //                 _token: '{{ csrf_token() }}',
+            //                 'data[' + id + '][user][name]': Lưu Hoàng Long,
+            //                 'data[' + id + '][user][email]': long @gmail.com,
+            //                 'data[' + id + '][phone]': 0123456789,
+            //                 'data[' + id + '][address]': Nha Trang,
+            //                 'data[' + id + '][img]': '',
+            //                 action: edit,
+            //             },
+            //             success: function(data) {
+            //                 // if (data.success) {      
+            //                 // }
+            //                 alert(data.success)
+            //                 console.log(data);
+            //                 // location.reload();
+            //             },
+            //             error: function(er) {
+            //                 console.log(er.responseText)
+            //                 // if (er.status == 422) {
+            //                 //     $('#error_message').html('Tài khoản hoặc mật khẩu không đúng!')
+            //                 // }
+            //             }
+
+            //         });
+            //         console.log({{ session('status') }})
+            //     }
+            //     return false;
+            // });
+        });
+
+        function apply() {
+            console.log('apply');
+            console.log($('#voucher').val());
+            livewire.emit('total', $('#voucher').val());
+            livewire.emit('refreshTotal');
+        }
+    </script>
+@endpush

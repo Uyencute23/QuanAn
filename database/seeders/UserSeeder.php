@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             ['Admin', '12345678', 'admin@gmail.com','9'],
             ['Nhân viên', '12345678', 'staff@gmail.com','1'],
         	['Khách bán lẻ', '12345678', 'client@gmail.com','2'], 
+            ['Lưu Hoàng Long', '12345678', 'long@gmail.com','2'], 
             ['Hà Tùng Lâm','12345678','Tunglam9x@gmail.com','2'], 
             ['Hà thu Hiền', '12345678', 'Hienha@gmail.com','2'], 
             ['Trần Thị Thanh', '12345678', 'Thanh9x@gmail.com','2'], 

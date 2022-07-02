@@ -149,6 +149,7 @@
                             },
                             success: function(data) {
                                 if (data.success) {
+                                    Livewire.emit('refreshNavbar')
                                     alert('Thêm thành công')
                                 }
                                 console.log(data)

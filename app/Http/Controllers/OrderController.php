@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\OrdersDataTable;
 use App\DataTables\OrdersDataTableEditor;
+use App\Events\OrderEvent;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -63,7 +64,7 @@ class OrderController extends Controller
         if ($order->promo_id != null) {
             $promotion = Promotion::find($order->promo_id);
             //if total is less than max_price, apply promotion
-            $total = $order->total/(1 - $promotion->precent/100);
+            $total = $order->total / (1 - $promotion->precent / 100);
             $promotion_price = $total * $promotion->precent / 100;
             // dd($this->promotion_price);
             if ($promotion_price > $promotion->max_price) {
@@ -120,5 +121,18 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+    public function sendMessage($message)
+    {
+        event(new OrderEvent([
+            'admin' => [
+                'img'=> 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png',
+                'title' => 'Đơn hàng mới',
+                'content' => 'Có đơn hàng mới từ Long luu',
+                'link' => 'http://127.0.0.1:8000/order/1',
+                'created_at' => now()->diffForHumans(),
+            ]
+        ]));
+        return response()->json(['success' => $message]);
     }
 }

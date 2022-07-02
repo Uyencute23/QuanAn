@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
         DB::table('roles')->truncate();
 
         $roles = [
-        	// 'Admin',
+        	
             'Nhân viên',
             'Khách Hàng' 
         ];
@@ -26,6 +26,10 @@ class RoleSeeder extends Seeder
                 'name' => $role,
             ]);
         }
+        Role::create([
+            'name' =>'Admin',
+            'id'=>9
+        ]);
 
         Schema::enableForeignKeyConstraints();
     }

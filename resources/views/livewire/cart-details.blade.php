@@ -94,9 +94,7 @@
                     if (quantity > 0) {
                         updateCart(parseInt($(this).val()), $(this).attr('data-id'))
                     } else if (quantity < 1) {
-
                         $(this).val(1)
-
                     }
 
                 });
@@ -112,6 +110,7 @@
                         if (data.success) {
                             alert('Xoá thành công')
                             Livewire.emit('refreshCart')
+                            Livewire.emit('refreshNavbar')
                         }
                         console.log(data)
                     }
@@ -132,6 +131,7 @@
                             if (data.success) {
                                 console.log('Thêm thành công')
                                 Livewire.emit('refreshCart')
+                                Livewire.emit('refreshNavbar')
                             }
                             console.log(data)
                         }

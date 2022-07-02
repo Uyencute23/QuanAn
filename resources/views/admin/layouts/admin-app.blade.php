@@ -19,9 +19,9 @@
     <link href="{{ asset('admin/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    {{-- <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
-    </script>
+    </script> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     <link href="{{ asset('admin/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -48,9 +48,11 @@
         .btn-lfm label {
             display: none;
         }
-
     </style>
     {{-- <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.1') }}" rel="stylesheet" /> --}}
+
+    <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+   
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -212,7 +214,7 @@
             </footer>
         </div>
     </main>
-   
+
     <!--   Core JS Files   -->
     <script src="{{ asset('admin/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/perfect-scrollbar.min.js') }}"></script>
@@ -356,6 +358,24 @@
                 return {};
             });
         }
+    </script>
+     <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('65ca50a4815ec7201ae8', {
+            cluster: 'ap1'
+        });
+
+        var channel = pusher.subscribe('order-channel');
+        channel.bind('my-event', function(data) {
+            if (data.message.admin) {
+                // alert(data.message.admin);
+                Livewire.emit('addNotifycation', data.message.admin);
+            }
+
+            // alert();
+        });
     </script>
     @stack('scripts_admin')
     @livewireScripts
