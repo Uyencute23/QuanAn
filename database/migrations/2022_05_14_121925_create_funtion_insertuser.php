@@ -39,6 +39,6 @@ class CreateFuntionInsertuser extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP FUNCTION  insert_user');
+        DB::unprepared('DROP FUNCTION  insert_user;');
     }
 }

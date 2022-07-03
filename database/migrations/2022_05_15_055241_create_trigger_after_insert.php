@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `after_insert_user`');
+        DB::unprepared('DROP TRIGGER after_insert_user;');
     }
 };

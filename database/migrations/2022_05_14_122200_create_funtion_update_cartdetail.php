@@ -39,6 +39,6 @@ class CreateFuntionUpdateCartdetail extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP FUNCTION  update_detail');
+        DB::unprepared('DROP FUNCTION  update_detail;');
     }
 }

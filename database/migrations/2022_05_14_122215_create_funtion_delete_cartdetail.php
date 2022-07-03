@@ -40,6 +40,6 @@ class CreateFuntionDeleteCartdetail extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP FUNCTION  delete_detail');
+        DB::unprepared('DROP FUNCTION  delete_detail;');
     }
 }
