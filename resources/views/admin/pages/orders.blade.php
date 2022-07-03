@@ -162,10 +162,10 @@
                             submit: 'Lưu'
                         },
                         remove: {
-                            title: "<h4>Xóa người dùng</h4>",
+                            title: "<h4>Xóa đơn hàng</h4>",
                             button: "Xóa",
                             submit: 'Xóa',
-                            confirm: 'Bạn có chắc chắn muốn xóa người dùng này?'
+                            confirm: 'Bạn có chắc chắn muốn xóa đơn này?'
                         },
                     }
                 });

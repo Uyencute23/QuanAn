@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -72,7 +73,23 @@ class OrdersDataTable extends DataTable
      */
     public function html()
     {
-        return $this->builder()
+        if(Auth::user()->role_id == 9){
+            return $this->builder()
+            ->setTableId('orders-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('lBfrtip')
+            ->orderBy(1)
+            ->buttons(
+                Button::make('create')->editor('editor'),
+                Button::make('edit')->editor('editor'),
+                Button::make('remove')->editor('editor'),
+                Button::make('colvis')->text('Cột'),
+            )
+            ->select(true)
+            ->language(config('app.datatableLanguage'));;
+        }else{
+            return $this->builder()
             ->setTableId('orders-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -82,15 +99,30 @@ class OrdersDataTable extends DataTable
                 Button::make('create')->editor('editor'),
                 Button::make('edit')->editor('editor'),
                 // Button::make('remove')->editor('editor'),
-                // Button::make('print')->text('In'),
                 Button::make('colvis')->text('Cột'),
-                // Button::make('export'),
-                // Button::make('print'),
-                // Button::make('reset'),
-                // Button::make('reload')
             )
             ->select(true)
             ->language(config('app.datatableLanguage'));;
+        }
+        // return $this->builder()
+        //     ->setTableId('orders-table')
+        //     ->columns($this->getColumns())
+        //     ->minifiedAjax()
+        //     ->dom('lBfrtip')
+        //     ->orderBy(1)
+        //     ->buttons(
+        //         Button::make('create')->editor('editor'),
+        //         Button::make('edit')->editor('editor'),
+        //         Button::make('remove')->editor('editor'),
+        //         // Button::make('print')->text('In'),
+        //         Button::make('colvis')->text('Cột'),
+        //         // Button::make('export'),
+        //         // Button::make('print'),
+        //         // Button::make('reset'),
+        //         // Button::make('reload')
+        //     )
+        //     ->select(true)
+        //     ->language(config('app.datatableLanguage'));;
     }
 
     /**

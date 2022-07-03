@@ -79,14 +79,16 @@
         var pusher = new Pusher('65ca50a4815ec7201ae8', {
             cluster: 'ap1'
         });
-        let customer_id 
-        @auth
+        let customer_id
+        @if (Auth::check() && Auth::user()->role_id == 2)
             customer_id = {{ Auth::user()->customer->id }}
-        @endauth
-        
+        @endif
+
+
+
         var channel = pusher.subscribe('order-channel');
         channel.bind('my-event', function(data) {
-            console.log('CUSOMER:'+customer_id);
+            console.log('CUSOMER:' + customer_id);
             if (data.message.client) {
                 if (data.message.client.customer_id == customer_id) {
 
