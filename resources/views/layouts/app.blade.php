@@ -79,7 +79,10 @@
         var pusher = new Pusher('65ca50a4815ec7201ae8', {
             cluster: 'ap1'
         });
-        let customer_id = '{{ Auth::user()->customer->id }}';
+        let customer_id 
+        @auth
+            customer_id = {{ Auth::user()->id }}
+        @endauth
         
         var channel = pusher.subscribe('order-channel');
         channel.bind('my-event', function(data) {
