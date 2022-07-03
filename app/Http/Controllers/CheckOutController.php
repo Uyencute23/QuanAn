@@ -120,7 +120,9 @@ class CheckOutController extends Controller
 
             ]
         ]));
-        return response()->json(['success' => 'Đặt hàng thành công']);
+        //route to order.show
+        // return redirect()->route('order-detail', $order->id);
+        return response()->json(['success' => 'Đặt hàng thành công','link' => route('order-detail', $order->id)], 200);
     }
 
     /**

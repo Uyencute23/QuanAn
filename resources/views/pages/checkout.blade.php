@@ -198,7 +198,7 @@
                             // }
                             alert(data.success)
                             console.log(data);
-                            window.location.href = '{{ route('home') }}';
+                            window.location.href = data.link;
                             // location.reload();
                         },
                         error: function(er) {

@@ -81,7 +81,7 @@
         });
         let customer_id 
         @auth
-            customer_id = {{ Auth::user()->id }}
+            customer_id = {{ Auth::user()->customer->id }}
         @endauth
         
         var channel = pusher.subscribe('order-channel');
