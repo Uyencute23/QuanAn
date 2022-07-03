@@ -6,6 +6,66 @@
         margin-left: -13px;
         margin-top: -7px;
     }
+
+    .search-box {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+    }
+
+    .input-search {
+        height: 35px;
+        width: 5px;
+        border-style: none;
+        padding: 10px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        outline: none;
+        border-radius: 25px;
+        transition: all .5s ease-in-out;
+        background-color: #21daeb00;
+        padding-right: 10px;
+        color: #fff;
+    }
+
+    .input-search::placeholder {
+        color: rgba(255, 255, 255, .5);
+        font-size: 14px;
+        letter-spacing: 2px;
+        font-weight: 100;
+    }
+
+    .btn-search {
+        /* width: 50px;
+        height: 50px; */
+        /* border-style: none;
+        font-size: 20px; */
+        font-weight: bold;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        right: 0px;
+        color: #ffffff;
+        background-color: transparent;
+        pointer-events: painted;
+    }
+
+    .btn-search:focus~.input-search {
+        width: 300px;
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    }
+
+    .input-search:focus {
+        width: 300px;
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    }
 </style>
 <header class="header_section">
     <div class="container">
@@ -101,12 +161,16 @@
                     </div>
 
                     @livewire('navbar')
-
-                    <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                    <div class="search-box ml-2">
+                        {{-- <button class="btn-search"><i class="fas fa-search"></i></button> --}}
+                        <button class="btn  btn-search my-2 my-sm-0 ">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
-                    </form>
+                        <input type="text" class="input-search" placeholder="Tìm kiếm...">
+
+                    </div>
+
+
                     {{-- <a href="" class="order_online">
                                 Order Online
                             </a> --}}
@@ -116,4 +180,21 @@
             </div>
         </nav>
     </div>
+    @push('scripts')
+        <script>
+            $(document).ready(function () {
+                $('.btn-search').click(function () {  
+                    //router('/search?q=' + $('.input-search').val());
+                    window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+                });
+                //input-search press enter
+                $('.input-search').keypress(function (e) {
+                    if (e.which == 13) {
+                        window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+                    }
+                });
+
+            });
+        </script>
+    @endpush
 </header>
