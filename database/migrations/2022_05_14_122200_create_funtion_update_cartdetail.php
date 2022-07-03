@@ -14,8 +14,9 @@ class CreateFuntionUpdateCartdetail extends Migration
      */
     public function up()
     {
-        DB::unprepared(
-            'CREATE OR REPLACE FUNCTION update_detail()
+        if (env('APP_ENV') == 'production') {
+            DB::unprepared(
+                'CREATE OR REPLACE FUNCTION update_detail()
             RETURNS trigger AS $$
             DECLARE 
             totala float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
@@ -29,7 +30,8 @@ class CreateFuntionUpdateCartdetail extends Migration
                     RETURN NULL;
             END
             $$ LANGUAGE plpgsql;'
-        );
+            );
+        }
     }
 
     /**

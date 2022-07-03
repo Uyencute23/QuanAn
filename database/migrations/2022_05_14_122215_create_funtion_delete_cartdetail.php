@@ -14,8 +14,9 @@ class CreateFuntionDeleteCartdetail extends Migration
      */
     public function up()
     {
-        DB::unprepared(
-            'CREATE OR REPLACE FUNCTION delete_detail()
+        if (env('APP_ENV') == 'production') {
+            DB::unprepared(
+                'CREATE OR REPLACE FUNCTION delete_detail()
             RETURNS trigger AS $$
             DECLARE 
             totala float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
@@ -35,7 +36,8 @@ class CreateFuntionDeleteCartdetail extends Migration
                     RETURN NULL;
             END
             $$ LANGUAGE plpgsql;'
-        );
+            );
+        }
     }
 
     /**

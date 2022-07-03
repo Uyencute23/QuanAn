@@ -14,15 +14,19 @@ class CreateFuntionCreatecart extends Migration
      */
     public function up()
     {
-        DB::unprepared(
-            'CREATE OR REPLACE FUNCTION create_cart()
-            RETURNS trigger AS $$
-            BEGIN
-                INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, 0, 0);
-                RETURN NULL;
-            END
-            $$ LANGUAGE plpgsql;'
-        );
+        //check env is production or not
+        if (env('APP_ENV') == 'production') {
+            DB::unprepared(
+                'CREATE OR REPLACE FUNCTION create_cart()
+                RETURNS trigger AS $$
+                BEGIN
+                    INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, 0, 0);
+                    RETURN NULL;
+                END
+                $$ LANGUAGE plpgsql;'
+            );
+        }
+
     }
 
     /**

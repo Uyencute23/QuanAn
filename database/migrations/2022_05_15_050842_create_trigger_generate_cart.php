@@ -14,20 +14,23 @@ return new class extends Migration
      */
     public function up()
     {
-        // DB::unprepared(
-        //     'CREATE TRIGGER generate_cart 
-        //     AFTER INSERT ON customers
-        //     FOR EACH ROW 
-        //     BEGIN
-        //         INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
-        //     END'
-        // );
-         DB::unprepared(
-            'CREATE TRIGGER generate_cart 
+        if (env('APP_ENV') == 'production') {
+            DB::unprepared(
+                'CREATE TRIGGER generate_cart 
             AFTER INSERT ON customers
             FOR EACH ROW 
             EXECUTE PROCEDURE create_cart();'
-        );
+            );
+        } else {
+            DB::unprepared(
+                'CREATE TRIGGER generate_cart 
+            AFTER INSERT ON customers
+            FOR EACH ROW 
+            BEGIN
+                INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
+            END'
+            );
+        }
     }
 
     /**

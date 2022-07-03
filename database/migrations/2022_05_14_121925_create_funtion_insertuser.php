@@ -14,8 +14,9 @@ class CreateFuntionInsertuser extends Migration
      */
     public function up()
     {
-        DB::unprepared(
-            'CREATE OR REPLACE FUNCTION insert_user()
+        if (env('APP_ENV') == 'production') {
+            DB::unprepared(
+                'CREATE OR REPLACE FUNCTION insert_user()
             RETURNS trigger AS $$
             BEGIN
                 IF(NEW.role_id = 1)
@@ -29,7 +30,8 @@ class CreateFuntionInsertuser extends Migration
                 RETURN NULL;
             END
             $$ LANGUAGE plpgsql;'
-        );
+            );
+        }
     }
 
     /**

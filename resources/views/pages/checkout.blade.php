@@ -64,14 +64,7 @@
                     </div>
                 </div>
 
-                <div class="row" >
-                    <div class="col">
-                        <a href="{{ route('home') }}" type="button" class="btn btn-secondary">
-                            TIẾP TỤC MUA HÀNG
-                        </a>
-                    </div>
-                    {{-- <div class="col"> <button class="btn btn-danger" type="submit">ĐẶT HÀNG </button></div> --}}
-                </div>
+
                 <!--REVIEW ORDER END-->
             </div>
 
@@ -107,7 +100,7 @@
                                         value="@if (Auth::user()->customer->address) {{ Auth::user()->customer->address }} @endif"
                                         required />
                                 </div>
-                                
+
                             </div>
                             {{-- <div class="form-group">
                             <div class="col-md-12"><strong>Thành Phố:</strong></div>
@@ -129,7 +122,8 @@
                             </div> --}}
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Số điện thoại:</strong></div>
-                                <div class="col-md-12"><input type="tel" minlength="10" maxlength="11" name="phone_u" class="form-control"
+                                <div class="col-md-12"><input type="tel" minlength="10" maxlength="11" name="phone_u"
+                                        class="form-control"
                                         value="@if (Auth::user()->customer->phone) {{ Auth::user()->customer->phone }} @endif"
                                         required />
                                 </div>
@@ -158,7 +152,16 @@
                                 </select>
                             </div>
                         </div> --}}
-                            <button class="btn btn-danger ml-3" type="submit">ĐẶT HÀNG </button>
+                            <div class="row ml-1">
+                                <div class="col">
+                                    <a href="{{ route('home') }}" type="button" class="btn btn-secondary">
+                                        TIẾP TỤC MUA HÀNG
+                                    </a>
+                                </div>
+                                <div class="col d-flex justify-content-end mr-3"> <button class="btn btn-danger " type="submit">ĐẶT HÀNG </button>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -208,7 +211,7 @@
                                 //set text error
                                 $('#error_phone').text('Số điện thoại không hợp lệ');
                                 $('#error_phone').show();
-                                
+
                             }
                             console.log(er)
                             // if (er.status == 422) {
