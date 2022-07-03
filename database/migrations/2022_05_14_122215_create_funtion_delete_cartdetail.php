@@ -22,10 +22,10 @@ class CreateFuntionDeleteCartdetail extends Migration
             quan integer := (SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
             BEGIN
                 IF ( totala IS NULL) THEN
-                    SET totala = 0;
+                    totala := 0;
                 END IF;
                 IF (quan IS NULL) THEN
-                    SET quan = 0;
+                    quan := 0;
                 END IF;
                 UPDATE carts 
                 SET
