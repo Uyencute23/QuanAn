@@ -17,10 +17,9 @@ class CreateFuntionUpdateCartdetail extends Migration
         DB::unprepared(
             'CREATE OR REPLACE FUNCTION update_detail()
             RETURNS trigger AS $$
+            DECLARE total float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id)
+            DECLARE quan integer := (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id)
             BEGIN
-                   WITH myconstants (total, quan) as (
-                    values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id))
-                    )
                    UPDATE carts 
                    SET
                    total = total,

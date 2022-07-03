@@ -17,11 +17,9 @@ class CreateFuntionDeleteCartdetail extends Migration
         DB::unprepared(
             'CREATE OR REPLACE FUNCTION delete_detail()
             RETURNS trigger AS $$
+            DECLARE total float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id)
+            DECLARE quan integer := (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id)
             BEGIN
-                WITH myconstants (totala, quana) as (
-                    values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id))
-                    )
-                  
                    UPDATE carts 
                    SET
                     total = totala,
