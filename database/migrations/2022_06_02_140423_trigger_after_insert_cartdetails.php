@@ -14,19 +14,26 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared(
+        // DB::unprepared(
+        //     'CREATE TRIGGER after_insert_cartdetails
+        //         AFTER INSERT ON cart_details
+        //         FOR EACH ROW 
+        //         BEGIN
+        //            SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
+        //            SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
+        //            UPDATE carts 
+        //            SET
+        //            total = @total,
+        //              quantity = @quan
+        //            WHERE id = NEW.cart_id;
+        //         END'
+        // );
+         DB::unprepared(
             'CREATE TRIGGER after_insert_cartdetails
                 AFTER INSERT ON cart_details
                 FOR EACH ROW 
-                BEGIN
-                   SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
-                   SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
-                   UPDATE carts 
-                   SET
-                   total = @total,
-                     quantity = @quan
-                   WHERE id = NEW.cart_id;
-                END'
+                EXECUTE PROCEDURE insert_detail();
+               '
         );
     }
 

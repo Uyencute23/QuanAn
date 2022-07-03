@@ -14,20 +14,26 @@ return new class extends Migration
      */
     public function up()
     {
+        // DB::unprepared(
+        //     'CREATE TRIGGER after_insert_user
+        //     AFTER INSERT ON users
+        //     FOR EACH ROW 
+        //     BEGIN
+        //         IF(NEW.role_id = 1)
+        //         THEN
+        //         INSERT INTO staff (user_id, created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
+        //         END IF;
+        //         IF(NEW.role_id = 2)
+        //         THEN
+        //         INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
+        //         END IF;
+        //     END'
+        // );
         DB::unprepared(
             'CREATE TRIGGER after_insert_user
             AFTER INSERT ON users
             FOR EACH ROW 
-            BEGIN
-                IF(NEW.role_id = 1)
-                THEN
-                INSERT INTO staff (user_id, created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
-                END IF;
-                IF(NEW.role_id = 2)
-                THEN
-                INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
-                END IF;
-            END'
+            EXECUTE PROCEDURE insert_user();'
         );
     }
 
