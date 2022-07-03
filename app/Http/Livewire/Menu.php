@@ -18,7 +18,7 @@ class Menu extends Component
     public $message = '';
     // protected $listeners = ['updateType' => 'updatedType'];
     protected $queryString = [
-        'type_p' => ['except' => 1],
+        'type_p' => [],
         'search' => ['except' => ''],
         'page' => ['except' => 1],
         'perPage' => ['except' => 0]
@@ -45,14 +45,17 @@ class Menu extends Component
         if ($this->page < $this->lastPage) {
             sleep(1);
             $this->perPage += 6;
-            $this->message ='';
-        }else{
+            $this->message = '';
+        } else {
             $this->message = 'Không còn sản phẩm nào để hiển thị';
         }
     }
     public function updateType($type)
     {
+        $this->message = '';
+        $this->search = '';
         $this->type_p = $type;
         $this->resetPage();
+
     }
 }

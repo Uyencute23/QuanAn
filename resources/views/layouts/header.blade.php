@@ -38,14 +38,15 @@
     .btn-search {
         /* width: 50px;
         height: 50px; */
-        /* border-style: none;
-        font-size: 20px; */
+        border-style: none;
+        font-size: 20px;
         font-weight: bold;
         outline: none;
         cursor: pointer;
         border-radius: 50%;
         position: absolute;
         right: 0px;
+        top: -5px;
         color: #ffffff;
         background-color: transparent;
         pointer-events: painted;
