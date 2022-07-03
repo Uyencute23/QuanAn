@@ -96,8 +96,8 @@
         <div class="modal-content">
             <button type="button" class="text-right close mr-2" data-dismiss="modal"><span
                 aria-hidden="true">×</span></button>
-            <div class="modal-login-content ">
-                <div class="left-content">
+            <div class="modal-login-content row ">
+                <div class="col pl-5 pr-5">
                     <nav class="login-nav nav nav-tabs" role="tablist">
                         <a id="controlled-tab-tab-login" data-toggle="tab" href="#login-form" aria-selected="true"
                             class="nav-item nav-link active">ĐĂNG NHẬP</a>
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="right-content">
+                <div class="col-md pl-0">
                     <div style=" height: 100%;">
                         <img alt="" src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
                             style="width: 100%;" />

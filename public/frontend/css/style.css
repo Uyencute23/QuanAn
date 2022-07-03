@@ -2845,8 +2845,8 @@ button.close {
     float: right;
 }
 .modal-login-content {
-    padding: 0 372px 0 0;
-    display: block;
+    /* padding: 0 372px 0 0;
+    display: block; */
     zoom: 1;
     position: relative;
     min-height: 500px;
