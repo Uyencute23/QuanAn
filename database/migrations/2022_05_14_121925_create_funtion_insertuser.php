@@ -26,7 +26,7 @@ class CreateFuntionInsertuser extends Migration
                 THEN
                 INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
                 END IF;
-                RETURN NEW;
+                RETURN NULL;
             END
             $$ LANGUAGE plpgsql;'
         );
