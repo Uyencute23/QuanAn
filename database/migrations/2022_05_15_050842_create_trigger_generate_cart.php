@@ -14,13 +14,19 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared(
+        // DB::unprepared(
+        //     'CREATE TRIGGER generate_cart 
+        //     AFTER INSERT ON customers
+        //     FOR EACH ROW 
+        //     BEGIN
+        //         INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
+        //     END'
+        // );
+         DB::unprepared(
             'CREATE TRIGGER generate_cart 
             AFTER INSERT ON customers
             FOR EACH ROW 
-            BEGIN
-                INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
-            END'
+            EXECUTE PROCEDURE create_cart();'
         );
     }
 
