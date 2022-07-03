@@ -18,18 +18,19 @@ class CreateFuntionDeleteCartdetail extends Migration
             'CREATE OR REPLACE FUNCTION delete_detail()
             RETURNS trigger AS $$
             BEGIN
-                   SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
-                   SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
-                   IF ( @total IS NULL) THEN
-                   SET @total = 0;
+                   WITH myconstants (total, quan) as (
+                    values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id))
+                    )
+                   IF (total IS NULL) THEN
+                   SET total = 0;
                    END IF;
-                   IF (@quan IS NULL) THEN
-                   SET @quan = 0;
+                   IF (quan IS NULL) THEN
+                   SET quan = 0;
                    END IF;
                    UPDATE carts 
                    SET
-                    total = @total,
-                    quantity = @quan
+                    total = total,
+                    quantity = quan
                    WHERE id = OLD.cart_id;
                 END
             $$ LANGUAGE plpgsql;'
