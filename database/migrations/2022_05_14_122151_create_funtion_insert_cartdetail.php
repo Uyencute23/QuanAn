@@ -18,12 +18,13 @@ class CreateFuntionInsertCartdetail extends Migration
             'CREATE OR REPLACE FUNCTION insert_detail()
             RETURNS trigger AS $$
             BEGIN
-                   SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
-                   SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
+                   WITH myconstants (total, quan) as (
+                    values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id))
+                    )
                    UPDATE carts 
                    SET
-                   total = @total,
-                     quantity = @quan
+                        total = total,
+                        quantity = quan
                    WHERE id = NEW.cart_id;
                 END
             $$ LANGUAGE plpgsql;'
