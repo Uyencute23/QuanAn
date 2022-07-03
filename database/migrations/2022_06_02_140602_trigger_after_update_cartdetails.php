@@ -18,13 +18,15 @@ return new class extends Migration
             'CREATE TRIGGER after_update_cartdetails
                 AFTER UPDATE ON cart_details
                 FOR EACH ROW 
+                BEGIN
                    SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
                    SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
                    UPDATE carts 
                    SET
                    total = @total,
                      quantity = @quan
-                   WHERE id = NEW.cart_id;'
+                   WHERE id = NEW.cart_id;
+                END'
         );
     }
 
