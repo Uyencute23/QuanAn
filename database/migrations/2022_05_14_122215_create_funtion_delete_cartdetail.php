@@ -20,7 +20,7 @@ class CreateFuntionDeleteCartdetail extends Migration
             BEGIN
                     WITH myconstants (totala, quana) as (
                     values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id))
-                    )
+                    );
                    IF (totala IS NULL) THEN
                    SET totala = 0;
                    END IF;
