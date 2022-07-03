@@ -166,7 +166,7 @@
                         <button class="btn  btn-search my-2 my-sm-0 ">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
-                        <input type="text" class="input-search" placeholder="Tìm kiếm...">
+                        <input type="text"  id="input-search" class="input-search" placeholder="Tìm kiếm...">
 
                     </div>
 
@@ -184,17 +184,20 @@
         <script>
             $(document).ready(function() {
                 $('.btn-search').click(function() {
-                    if ($('.input-search').css('width') > '30px') {
+                    if ($('#input-search').val() !='') {
                         //router('/search?q=' + $('.input-search').val());
-                        window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+                        window.location.href = '{{ route('menu') }}?search=' + $('#input-search').val();
                     }
                 });
                 //input-search press enter
-                $('.input-search').keypress(function(e) {
+                $('#input-search').keypress(function(e) {
                     if (e.which == 13) {
-                        window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+                        window.location.href = '{{ route('menu') }}?search=' + $('#input-search').val();
                     }
                 });
+                //press enter on mobile
+
+
 
             });
         </script>
