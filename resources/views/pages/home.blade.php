@@ -51,7 +51,7 @@
             </div>
         </div>
     </section>
-    @include('layouts.menu')
+    @livewire('menu')
 
     <section class="about_section layout_padding">
         <div class="container  ">

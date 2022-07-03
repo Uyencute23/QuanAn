@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    @include('layouts.menu')
+    @livewire('menu')
 @endsection
