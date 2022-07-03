@@ -94,7 +94,7 @@
     <div class="modal-dialog">
         
         <div class="modal-content">
-            <button type="button" class="close mr-2" data-dismiss="modal"><span
+            <button type="button" class="text-right close mr-2" data-dismiss="modal"><span
                 aria-hidden="true">×</span></button>
             <div class="modal-login-content ">
                 <div class="left-content">
