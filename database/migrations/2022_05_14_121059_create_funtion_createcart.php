@@ -19,6 +19,7 @@ class CreateFuntionCreatecart extends Migration
             RETURNS trigger AS $$
             BEGIN
                 INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
+                /
                 RETURN NULL;
             END
             $$ LANGUAGE plpgsql;'
