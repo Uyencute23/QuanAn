@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class Menu extends Component
 {
     use WithPagination;
-    public $search = '';
+    public $search = 'Gà';
     public $type_p = 0;
     public $page = 1;
     public $perPage = 9;
@@ -37,6 +37,7 @@ class Menu extends Component
     }
     public function updatingSearch()
     {
+        $this->type_p = 0;
         $this->resetPage();
     }
     public function loadMore()
