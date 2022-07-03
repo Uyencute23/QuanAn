@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class Menu extends Component
 {
     use WithPagination;
-    public $search = 'Gà';
+    public $search = '';
     public $type_p = 0;
     public $page = 1;
     public $perPage = 9;
@@ -27,7 +27,7 @@ class Menu extends Component
     {
 
         if ($this->type_p == 0) {
-            $products = Product::where('name', 'like', '%' . $this->search . '%')->paginate($this->perPage);
+            $products = Product::where('name', 'like', '%Gà%')->paginate($this->perPage);
         } else {
             $products = Product::where('name', 'like', '%' . $this->search . '%')->where('product_type_id', $this->type_p)->paginate($this->perPage);
         }
