@@ -26,6 +26,7 @@ class CreateFuntionInsertCartdetail extends Migration
                         total = total,
                         quantity = quan
                    WHERE id = NEW.cart_id;
+                   RETURN NEW;
                 END
             $$ LANGUAGE plpgsql;'
         );

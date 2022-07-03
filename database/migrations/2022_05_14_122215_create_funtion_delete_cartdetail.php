@@ -27,6 +27,7 @@ class CreateFuntionDeleteCartdetail extends Migration
                     total = totala,
                     quantity = quana
                    WHERE id = OLD.cart_id;
+                   RETURN OLD;
                 END
             $$ LANGUAGE plpgsql;'
         );
