@@ -18,7 +18,6 @@ return new class extends Migration
             'CREATE TRIGGER after_insert_user
             AFTER INSERT ON users
             FOR EACH ROW 
-            BEGIN
                 IF(NEW.role_id = 1)
                 THEN
                 INSERT INTO staff (user_id, created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
@@ -27,7 +26,7 @@ return new class extends Migration
                 THEN
                 INSERT INTO customers (user_id,created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
                 END IF;
-            END'
+'
         );
     }
 

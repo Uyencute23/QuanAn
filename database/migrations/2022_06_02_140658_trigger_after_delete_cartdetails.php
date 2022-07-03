@@ -18,7 +18,6 @@ return new class extends Migration
             'CREATE TRIGGER after_delete_cartdetails
                 AFTER DELETE ON cart_details
                 FOR EACH ROW 
-                BEGIN
                    SET @total = (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
                    SET @quan = (SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
                    IF ( @total IS NULL) THEN
@@ -31,8 +30,7 @@ return new class extends Migration
                    SET
                     total = @total,
                     quantity = @quan
-                   WHERE id = OLD.cart_id;
-                END'
+                   WHERE id = OLD.cart_id;'
         );
     }
 

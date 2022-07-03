@@ -18,7 +18,7 @@ return new class extends Migration
             'CREATE TRIGGER generate_cart 
             AFTER INSERT ON customers
             FOR EACH ROW 
-                INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
+            INSERT INTO carts (customer_id, quantity, total) VALUES(NEW.id, "0", "0");
             '
         );
     }
