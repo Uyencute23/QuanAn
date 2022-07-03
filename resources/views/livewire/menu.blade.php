@@ -41,7 +41,7 @@
             </div>
 
             <ul class="filters_menu">
-                <li class="@if($type_p==0) active @endif" data-filter="*">All</li>
+                <li class="@if($type_p==0) active @endif"  wire:click="updateType(0)"data-filter="*">All</li>
                 @foreach ($types as $type)
                     <li class="@if($type_p== $type->id) active @endif" wire:click="updateType({{ $type->id }})">{{ $type->name }} </li>
                 @endforeach
