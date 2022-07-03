@@ -3,7 +3,7 @@
         font-size: 10px;
         padding: 5px 5px;
         vertical-align: top;
-        margin-left: -10px;
+        margin-left: -13px;
         margin-top: -7px;
     }
 </style>
