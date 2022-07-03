@@ -18,15 +18,10 @@ class CreateFuntionDeleteCartdetail extends Migration
             'CREATE OR REPLACE FUNCTION delete_detail()
             RETURNS trigger AS $$
             BEGIN
-                    WITH myconstants (totala, quana) as (
+                WITH myconstants (totala, quana) as (
                     values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id))
-                    );
-                   IF (totala IS NULL) THEN
-                   SET totala = 0;
-                   END IF;
-                   IF (quana IS NULL) THEN
-                   SET quana = 0;
-                   END IF;
+                    )
+                  
                    UPDATE carts 
                    SET
                     total = totala,
