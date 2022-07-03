@@ -21,6 +21,7 @@ class CreateFuntionDeleteCartdetail extends Migration
                    WITH myconstants (total, quan) as (
                     values ((SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id),(SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id))
                     )
+                    BEGIN
                    IF (total IS NULL) THEN
                    SET total = 0;
                    END IF;
@@ -32,6 +33,7 @@ class CreateFuntionDeleteCartdetail extends Migration
                     total = total,
                     quantity = quan
                    WHERE id = OLD.cart_id;
+                   END
                 END
             $$ LANGUAGE plpgsql;'
         );
