@@ -182,13 +182,15 @@
     </div>
     @push('scripts')
         <script>
-            $(document).ready(function () {
-                $('.btn-search').click(function () {  
-                    //router('/search?q=' + $('.input-search').val());
-                    window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+            $(document).ready(function() {
+                $('.btn-search').click(function() {
+                    if ($('.input-search').css('width') > '30px') {
+                        //router('/search?q=' + $('.input-search').val());
+                        window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
+                    }
                 });
                 //input-search press enter
-                $('.input-search').keypress(function (e) {
+                $('.input-search').keypress(function(e) {
                     if (e.which == 13) {
                         window.location.href = '{{ route('menu') }}?search=' + $('.input-search').val();
                     }
