@@ -27,7 +27,7 @@ class Menu extends Component
     {
 
         if ($this->type_p == 0) {
-            $products = Product::where('name', 'like', '%Gà%')->paginate($this->perPage);
+            $products = Product::where('name', 'like', '%' . $this->search . '%')->paginate($this->perPage);
         } else {
             $products = Product::where('name', 'like', '%' . $this->search . '%')->where('product_type_id', $this->type_p)->paginate($this->perPage);
         }
