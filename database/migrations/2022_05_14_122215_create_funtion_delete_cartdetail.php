@@ -21,13 +21,19 @@ class CreateFuntionDeleteCartdetail extends Migration
             totala float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
             quan integer := (SELECT SUM(quantity) FROM cart_details WHERE cart_id = OLD.cart_id);
             BEGIN
-                   UPDATE carts 
-                   SET
+                IF ( totala IS NULL) THEN
+                    SET totala = 0;
+                END IF;
+                IF (quan IS NULL) THEN
+                    SET quan = 0;
+                END IF;
+                UPDATE carts 
+                SET
                     total = totala,
                     quantity = quan
-                   WHERE id = OLD.cart_id;
-                   RETURN NULL;
-                END
+                    WHERE id = OLD.cart_id;
+                    RETURN NULL;
+            END
             $$ LANGUAGE plpgsql;'
         );
     }
