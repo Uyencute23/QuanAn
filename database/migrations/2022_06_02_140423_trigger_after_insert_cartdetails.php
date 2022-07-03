@@ -45,6 +45,6 @@ return new class extends Migration
     public function down()
     {
         //
-        DB::unprepared('DROP TRIGGER after_insert_cartdetails;');
+        DB::unprepared('DROP TRIGGER after_insert_cartdetails on cart_details;');
     }
 };
