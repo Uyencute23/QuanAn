@@ -18,13 +18,13 @@ class CreateFuntionInsertCartdetail extends Migration
             'CREATE OR REPLACE FUNCTION insert_detail()
             RETURNS trigger AS $$
             DECLARE 
-            total float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
+            totala float := (SELECT SUM(total*quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
             quan integer := (SELECT SUM(quantity) FROM cart_details WHERE cart_id = NEW.cart_id);
             BEGIN
 
                    UPDATE carts 
                    SET
-                        total = total,
+                        total = totala,
                         quantity = quan
                    WHERE id = NEW.cart_id;
                    RETURN NULL;
