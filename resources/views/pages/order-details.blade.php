@@ -121,7 +121,7 @@
             <div class="card-body">
                 <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span class="text-uppercase">Theo dõi đơn
                         hàng
-                        - </span><span class="text-medium">34VB5540K83</span></div>
+                        - </span><span class="text-medium">{{$order->id}}</span></div>
 
                 @livewire('tracking', ['orderid' => $order->id])
 
