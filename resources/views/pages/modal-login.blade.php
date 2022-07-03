@@ -92,10 +92,10 @@
 <div class="modal modal-login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        
+
         <div class="modal-content">
             <button type="button" class="text-right close mr-2" data-dismiss="modal"><span
-                aria-hidden="true">×</span></button>
+                    aria-hidden="true">×</span></button>
             <div class="modal-login-content row ">
                 <div class="col pl-5 pr-5">
                     <nav class="login-nav nav nav-tabs" role="tablist">
@@ -107,22 +107,28 @@
                     <div class="tab-content">
                         <div id="login-form" aria-labelledby="controlled-tab-tab-login" role="tabpanel"
                             aria-hidden="false" class="fade tab-pane active in show">
-                            <form id="login" action="" >
+                            <form id="login" action="">
                                 @csrf
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input autocomplete="email" type="email" class="form-control" placeholder="Email" name="email"
-                                        required>
+                                    <input autocomplete="email" type="email" class="form-control" placeholder="Email"
+                                        name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
                                     <div class="password-icon">
                                         <input type="password" autocomplete="current-password" id="password"
-                                            class="form-control" placeholder="Mật khẩu" name="password" minlength="8" required>
+                                            class="form-control" placeholder="Mật khẩu" name="password" minlength="8"
+                                            required>
                                         <span class="icon">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
+                                        me</label>
                                 </div>
                                 <div>
                                     <p id="error_message" class="text-danger"></p>
@@ -130,10 +136,11 @@
                                 <div class="form-group clearfix">
                                     <a href="#" class="btn-forgotpw" title="Forgot password">Quên mật khẩu</a>
                                 </div>
-                                
+
                                 <div class="modal-footer">
                                     <div class="col">
-                                        <button class="btn btn-primary btn-block" type="submit" title="Sign in">Đăng nhập</button>
+                                        <button class="btn btn-primary btn-block" type="submit" title="Sign in">Đăng
+                                            nhập</button>
                                         {{-- <button class="btn btn-outline-primary btn-block " type="button">
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                             <span>Đăng nhập
@@ -167,19 +174,17 @@
                                         <input type="password" autocomplete="new-password" class="form-control"
                                             placeholder="Nhập mật khẩu" minlength="8" name="password" required>
 
-                                        <span class="icon"><i class="fa fa-eye"
-                                                aria-hidden="true"></i></span>
+                                        <span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Nhập lại mật khẩu</label>
                                     <div class="password-icon">
                                         <input type="password" autocomplete="new-password" class="form-control"
-                                            placeholder="Nhập lại mật khẩu" minlength="8" name="password_confirmation"
-                                            required>
+                                            placeholder="Nhập lại mật khẩu" minlength="8"
+                                            name="password_confirmation" required>
 
-                                        <span class="icon"><i class="fa fa-eye"
-                                                aria-hidden="true"></i></span>
+                                        <span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
                                 <div>
@@ -187,7 +192,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <div class="col">
-                                        <button class="btn btn-primary btn-block" type="submit" title="Sign up">Đăng ký</button>
+                                        <button class="btn btn-primary btn-block" type="submit" title="Sign up">Đăng
+                                            ký</button>
                                         {{-- <p class="notes">By registering, you agree to
                                             <a href="/dieu-khoan-su-dung" title="Lotteria's Terms of Use">Lotteria's
                                                 Terms of Use</a> &amp;
@@ -201,7 +207,8 @@
                 </div>
                 <div class="col-md pl-0">
                     <div style=" height: 100%;">
-                        <img alt="" src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
+                        <img alt=""
+                            src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
                             style="width: 100%;" />
                     </div>
                 </div>
@@ -212,13 +219,13 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $(document).on('submit', '#login', function() { 
+            $(document).on('submit', '#login', function() {
                 // alert('hihi')
                 {
                     $('#error_message').html('')
                     $.ajax({
                         type: 'POST',
-                        url: '{{route('login')}}',
+                        url: '{{ route('login') }}',
                         data: $('#login').serialize(),
                         success: function(data) {
                             // if (data.success) {      
@@ -226,22 +233,20 @@
                             alert(data.success)
                             location.reload();
                         },
-                        error: function(er)
-                        {
+                        error: function(er) {
                             console.log(er.responseText)
-                            if(er.status == 422)
-                            {
+                            if (er.status == 422) {
                                 $('#error_message').html('Tài khoản hoặc mật khẩu không đúng!')
                             }
                         }
-                        
+
                     });
-                    console.log({{session('status')}})
+                    console.log({{ session('status') }})
                 }
                 return false;
             });
 
-            $(document).on('submit', '#signup', function() { 
+            $(document).on('submit', '#signup', function() {
                 // alert('hihi')
                 {
                     $('#error_message_signup').html('')
@@ -255,28 +260,24 @@
                             alert(data.success)
                             location.reload();
                         },
-                        error: function(er)
-                        {
+                        error: function(er) {
                             e = JSON.parse(er.responseText)
                             console.log(e)
                             var mess = ''
-                            if(er.status == 422)
-                            {
-                                if(e.errors.email)
-                                {
+                            if (er.status == 422) {
+                                if (e.errors.email) {
                                     mess = 'Email đã có người sử dụng!'
                                 }
-                                if(e.errors.password)
-                                {
-                                    mess = mess +  '<br> Mật khẩu không trùng khớp!'
+                                if (e.errors.password) {
+                                    mess = mess + '<br> Mật khẩu không trùng khớp!'
                                 }
                                 console.log(mess)
                                 $('#error_message_signup').html(mess)
                             }
                         }
-                        
+
                     });
-                    console.log({{session('status')}})
+                    console.log({{ session('status') }})
                 }
                 return false;
             });

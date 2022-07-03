@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\OrderTrackingController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
@@ -47,17 +48,17 @@ Route::get('/product-detail/{id}', [ProductController::class, 'show'])->name('pr
 
 Route::get('/promo', [PromotionController::class, 'index'])->name('promo');
 
-Route::get('/cart', [CartController::class, 'index'])->middleware(['auth','customer'])->name('cart');
+Route::get('/cart', [CartController::class, 'index'])->middleware(['auth','customer'])->middleware(['auth','customer'])->name('cart');
 Route::get('/cartdetail/{id}', [CartDetailController::class, 'destroy'])->middleware(['auth','customer'])->name('cartdetail.del');
 Route::post('/updatecart', [CartDetailController::class, 'update'])->middleware(['auth','customer'])->name('cartdetail.update');
 // Route::get('/checkout',[OrderDetailController::class,'index'])->name('checkout');
 Route::get('/checkout', [OrderDetailController::class,'index'])->middleware(['auth','customer'])->name('checkout');
-Route::post('/addproduct', [CartDetailController::class, 'store'])->name('product.add');
-Route::post('/rating', [RatingController::class, 'store'])->name('product.rating');
+Route::post('/addproduct', [CartDetailController::class, 'store'])->middleware(['auth','customer'])->name('product.add');
+Route::post('/rating', [RatingController::class, 'store'])->middleware(['auth','customer'])->name('product.rating');
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
-Route::post('/create-order', [CheckOutController::class, 'store'])->name('checkout.create');
-
-Route::get('/news', [PostController::class, 'index'])->name('news');
+Route::post('/create-order', [CheckOutController::class, 'store'])->middleware(['auth','customer'])->name('checkout.create');
+Route::get('/news', [PostController::class, 'index'])->middleware(['auth','customer'])->name('news');
+Route::get('/order-detail/{id}',[OrderTrackingController::class,'index'])->middleware(['auth','customer'])->name('order-detail');
 
 Route::get('/pusher/{message}',[OrderController::class,'sendMessage'])->name('pusher');
 require __DIR__ . '/auth.php';

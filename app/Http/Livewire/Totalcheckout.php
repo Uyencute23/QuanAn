@@ -11,6 +11,7 @@ class Totalcheckout extends Component
     protected $listeners = ['refreshTotal' => '$refresh', 'total' => 'total'];
     public $price = 0;
     public $total;
+    public $error='';
     public function render()
     {
         $cart = Auth::user()->customer->cart;
@@ -39,6 +40,10 @@ class Totalcheckout extends Component
             } else {
                 $this->price = $total->max_price;
             }
+            $this->error = '';
+        }
+        else {
+            $this->error = 'Mã giảm giá không tồn tại';
         }
     }
 }

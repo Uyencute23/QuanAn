@@ -19,7 +19,7 @@
                 </div>
                 </div>
             </div> --}}
-        <div class="row cart-body">
+        <div class="row cart-body mt-5 mb-5">
             <div class="col-lg-7">
                 <!--REVIEW ORDER-->
                 <div class="panel panel-info">
@@ -47,21 +47,16 @@
                             <hr>
                         @endforeach
                     </div>
-                    <div class="row">
-                        <div class="col-7">
-                            <span class="text-secondary"> Lưu ý: Mỗi đơn hàng chỉ áp dụng được 1 voucher.</span>
-                            <div class="row p-3 ml-3">
-                                <h6 class=' font-weight-bold'>Voucher:</h6>
-                                <input class="ml-2" id="voucher" name="promo_id"
-                                    style="width: 130px; border:1px solid;border-radius: 5px" type="text">
-
-                                <button class="btn btn-primary ml-2" style="border-radius: 5px" onclick="apply()">Áp
-                                    dụng</button>
-                            </div>
-
+                    <div class="input-group mb-3">
+                        <input style="border-top-left-radius: 5px;border-bottom-left-radius: 5px" type="text"
+                            class="form-control" id="voucher" placeholder="Mã giảm giá" aria-label="Mã giảm giá"
+                            aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button style="border-top-right-radius: 5px;border-bottom-right-radius: 5px" onclick="apply()"
+                                class="btn btn-primary" type="button">Áp dụng</button>
                         </div>
-                        @livewire('totalcheckout')
                     </div>
+                    @livewire('totalcheckout')
                 </div>
 
 
@@ -158,7 +153,8 @@
                                         TIẾP TỤC MUA HÀNG
                                     </a>
                                 </div>
-                                <div class="col d-flex justify-content-end mr-3"> <button class="btn btn-danger " type="submit">ĐẶT HÀNG </button>
+                                <div class="col d-flex justify-content-end mr-3"> <button class="btn btn-danger "
+                                        type="submit">ĐẶT HÀNG </button>
                                 </div>
                             </div>
 

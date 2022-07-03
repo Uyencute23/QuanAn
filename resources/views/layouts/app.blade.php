@@ -35,21 +35,7 @@
     {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
 
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
-    <script>
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
 
-        var pusher = new Pusher('65ca50a4815ec7201ae8', {
-            cluster: 'ap1'
-        });
-
-        var channel = pusher.subscribe('order-channel');
-        channel.bind('my-event', function(data) {
-            if (data.message.client) {
-                alert(data.message.client);
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -80,12 +66,33 @@
     <!-- custom js -->
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-    </script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"> --}}
+    {{-- </script> --}}
     <!-- End Google Map -->
 
     @stack('scripts')
     @livewireScripts
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('65ca50a4815ec7201ae8', {
+            cluster: 'ap1'
+        });
+        let customer_id = '{{ Auth::user()->customer->id }}';
+        
+        var channel = pusher.subscribe('order-channel');
+        channel.bind('my-event', function(data) {
+            console.log('CUSOMER:'+customer_id);
+            if (data.message.client) {
+                if (data.message.client.customer_id == customer_id) {
+
+                    Livewire.emit('refreshTracking');
+                    console.log(data.message.client);
+                }
+            }
+        });
+    </script>
 
 </body>
 

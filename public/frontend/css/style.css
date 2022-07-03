@@ -1064,10 +1064,10 @@ h1 {
     background-color: #fff;
     color: #989898;
     font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     border-radius: 4px;
     position: relative;
-    max-height: 250px;
+    /* max-height: 250px; */
 }
 
 .card+.card {
@@ -3192,7 +3192,7 @@ button.close {
 html,body,.wrapper{
   background: #f7f7f7;
 }
-.steps {
+/* .steps {
   margin-top: -41px;
   display: inline-block;
   float: right;
@@ -3248,7 +3248,7 @@ html,body,.wrapper{
 }
 .step.check_step {
   margin-left: 5px;
-}
+} */
 .ch_pp {
   text-decoration: underline;
 }

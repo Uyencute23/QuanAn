@@ -5,4 +5,5 @@
   'notifycation' => 'App\\Http\\Livewire\\Notifycation',
   'summary' => 'App\\Http\\Livewire\\Summary',
   'totalcheckout' => 'App\\Http\\Livewire\\Totalcheckout',
+  'tracking' => 'App\\Http\\Livewire\\Tracking',
 );

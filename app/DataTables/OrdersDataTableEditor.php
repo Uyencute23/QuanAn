@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Events\OrderEvent;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
@@ -47,5 +48,19 @@ class OrdersDataTableEditor extends DataTablesEditor
     public function removeRules(Model $model)
     {
         return [];
+    }
+
+    //updating
+    public function updating(Model $model, array $data)
+    {
+
+        event(new OrderEvent([
+            'client' => [         
+                'status' => $data['status'],
+                'id' => $model->id,
+                'customer_id' => $model->customer_id,
+            ]
+        ]));
+        return $data;
     }
 }
