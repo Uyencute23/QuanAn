@@ -9,6 +9,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\CustomerOrder;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\OrderTrackingController;
@@ -58,6 +59,7 @@ Route::post('/rating', [RatingController::class, 'store'])->middleware(['auth','
 // Route::post('/cart-details/{proID}', [CartDetailController::class,'store'])->name('cart-details');
 Route::post('/create-order', [CheckOutController::class, 'store'])->middleware(['auth','customer'])->name('checkout.create');
 Route::get('/news', [PostController::class, 'index'])->middleware(['auth','customer'])->name('news');
+Route::get('/customerorders',[CustomerOrder::class,'index'])->middleware(['auth','customer'])->name('customerorders.index');
 Route::get('/order-detail/{id}',[OrderTrackingController::class,'index'])->middleware(['auth','customer'])->name('order-detail');
 
 Route::get('/pusher/{message}',[OrderController::class,'sendMessage'])->name('pusher');

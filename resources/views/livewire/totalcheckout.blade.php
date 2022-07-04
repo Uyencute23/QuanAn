@@ -22,8 +22,15 @@
 
         </div>
         <div class="col-md-6 p-0">
-            <h4 class="text-right"> <span class="font-weight-bold"> Tổng Tiền:</span>
-                <strong style="font-size: 28px;color:rgb(212, 4, 4)"> {{ $total }}đ</strong>
+            <h6 class="text-right"> <span class="font-weight-bold"> Sản phẩm:</span>
+                <strong > {{ number_format( $total, 0, ',', '.'); }}đ</strong>
+            </h6>
+            <h6 class="text-right"> <span class="font-weight-bold"> Phí ship:</span>
+                <strong style=""> 15.000đ</strong>
+            </h6>
+            
+            <h4 class="text-right"> <span class="font-weight-bold"> Thành Tiền:</span>
+                <strong style="font-size: 28px;color:rgb(212, 4, 4)"> {{ number_format($total + 15000, 0, ',', '.');}}đ</strong>
             </h4>
         </div>
         

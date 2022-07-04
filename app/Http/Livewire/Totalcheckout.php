@@ -16,7 +16,7 @@ class Totalcheckout extends Component
     {
         $cart = Auth::user()->customer->cart;
 
-        $this->total = number_format($cart->total - $this->price, 0, ',', '.');
+        $this->total = $cart->total - $this->price;
         // $this->total = $this->price;
         $data = [
             'cart' => $cart,

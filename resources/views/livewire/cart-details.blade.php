@@ -1,6 +1,17 @@
 <div>
     <div class="col-12">
-        <h1 style="text-align: center;">GIỎ HÀNG</h1>
+        <div class="row ">
+            <div class="col text-center">
+                <h1>GIỎ HÀNG</h1>
+
+            </div>
+            <a href="{{route('customerorders.index')}}">
+                <h5>Tất cả đơn<i class="fas fa-list ml-2 mt-2"></i></h5>
+            </a>
+
+
+        </div>
+
         <p style="text-align:start ">
             Bạn có <span class="text-info font-weight-bold">{{ count($detais) }} </span>sản phẩm trong giỏ hàng
         </p>
@@ -45,9 +56,9 @@
                                     <h2> {{ number_format($detail->total, 0, ',', '.') }}đ</h2>
                                 </td>
                                 <td data-th="Quantity" class="align-middle">
-                                    <input min="1" max="1000" data-id="{{ $detail->product_id }}" type="number"
-                                        class="form-control input_quantity text-center " style="max-width: 70px;"
-                                        value="{{ $detail->quantity }}">
+                                    <input min="1" max="1000" data-id="{{ $detail->product_id }}"
+                                        type="number" class="form-control input_quantity text-center "
+                                        style="max-width: 70px;" value="{{ $detail->quantity }}">
                                 </td>
                                 <td class="h3 align-middle">
                                     <h2> {{ number_format($detail->total * $detail->quantity, 0, ',', '.') }}đ</h2>
