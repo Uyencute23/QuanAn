@@ -18,32 +18,30 @@
             </div>
         </div>
     </div>
-    <div style="display: none">
+    {{-- <div style="display: none">
         <div id="customForm">
             <fieldset>
                 <div data-editor-template="name"></div>
             </fieldset>
 
             <fieldset>
-                <label data-dte-e="label" class="col-lg-4 col-form-label" for="DTE_Field_img">Hình ảnh:
-                    <div data-dte-e="msg-label" class="DTE_Label_Info"></div>
-                </label>
-                <div class="row btn-lfm">
-                    <div class="col-3">
-                        <a id="lfm" style="width: 120px; height: 40px;" data-input="DTE_Field_img"
-                            data-preview="holder" class="lfm btn btn-primary text-white"> <i class="fas fa-image"></i>Chọn
-                            ảnh</a>
-                    </div>
+                <div class="input-group mb-3">
                     <div class="col" data-editor-template="img"></div>
-                    <div id="holder" style="margin-top:15px;max-height:200px;display: none"><img style="height: 12rem;">
+                    <div class="input-group-append">
+                        <button id="lfm" style="width: 120px; height: 40px; margin-top: 40px"
+                            data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-secondary text-white"> <i
+                                class="fas fa-image "></i>Chọn
+                            ảnh</button>
                     </div>
+                </div>
+                <div id="holder" style="margin-top:15px;max-height:200px;display: none"><img style="height: 12rem;">
                 </div>
             </fieldset>
             <fieldset class="hr">
                 <div data-editor-template="description"></div>
             </fieldset>
         </div>
-    </div>
+    </div> --}}
     @push('scripts_admin')
         <script>
             $(document).ready(function() {

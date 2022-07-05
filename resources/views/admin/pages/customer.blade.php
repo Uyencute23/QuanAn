@@ -5,8 +5,7 @@
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
-                        {{-- <a id="lfm" data-input="DTE_Field_img" data-preview="holder" class="btn btn-primary text-white"> <i class="fas fa-image"></i> Choose </a> --}}
-                        <h5>{{$title}}</h5>
+                        <h5>{{ $title }}</h5>
                     </div>
                     <div class="card-body p-3">
                         <div class="table-responsive">
@@ -34,10 +33,19 @@
             </fieldset>
 
             <fieldset>
-                <label data-dte-e="label" class="col-lg-4 col-form-label" for="DTE_Field_img">Hình ảnh:
-                    <div data-dte-e="msg-label" class="DTE_Label_Info"></div>
-                </label>
-                <div class="row btn-lfm">
+                <div class="input-group mb-3">
+                    <div class="col" data-editor-template="img"></div>
+                    <div class="input-group-append">
+                        <button id="lfm" style="width: 120px; height: 40px; margin-top: 40px"
+                            data-input="DTE_Field_img" data-preview="holder" class="lfm btn btn-secondary text-white"> <i
+                                class="fas fa-image "></i>Chọn
+                            ảnh</button>
+                    </div>
+
+                </div>
+                <div id="holder" style="margin-top:15px;max-height:200px;display: none"><img style="height: 12rem;">
+                </div>
+                {{-- <div class="row btn-lfm">
                     <div class="col-3">
                         <a id="lfm" style="width: 120px; height: 40px;" data-input="DTE_Field_img"
                             data-preview="holder" class="lfm btn btn-primary text-white"> <i class="fas fa-image"></i>Chọn
@@ -46,7 +54,7 @@
                     <div class="col" data-editor-template="img"></div>
                     <div id="holder" style="margin-top:15px;max-height:200px;display: none"><img style="height: 12rem;">
                     </div>
-                </div>
+                </div> --}}
             </fieldset>
             <fieldset class="hr">
                 <div data-editor-template="description"></div>
@@ -68,8 +76,7 @@
                     table: "#customer-table",
                     template: '#customForm',
                     display: 'bootstrap',
-                    fields: [
-                        {
+                    fields: [{
                             label: "Họ và tên",
                             name: "user.name",
                         },
@@ -94,7 +101,7 @@
                             // clearText: "Hủy bỏ",
                             // noImageText: 'Không có hình ảnh',
                         },
-                      
+
                         // {
                         //     label: "Nhập lại mật khẩu",
                         //     name: "password_confirmation",
@@ -130,7 +137,7 @@
                             submit: 'Xóa',
                             confirm: 'Bạn có chắc chắn muốn xóa người dùng này?'
                         },
-                      
+
                     }
                 });
                 // $('#schedule-table').on('click', 'tbody td:not(:first-child)', function(e) {
@@ -140,7 +147,7 @@
                 setImgHolder(editor)
 
             });
-           
+
             function lfm() {
 
                 $('#lfm').filemanager('image');

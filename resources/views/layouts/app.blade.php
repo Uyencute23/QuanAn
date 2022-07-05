@@ -45,7 +45,7 @@
 <body>
     <div class="hero-header">
         @include('layouts.header')
-        @if (url()->current() == 'http://127.0.0.1:8000')
+        @if (url()->current() == route('home'))
             @include('layouts.slide')
         @endif
     </div>
