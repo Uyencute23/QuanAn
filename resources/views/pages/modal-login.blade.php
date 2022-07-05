@@ -100,9 +100,9 @@
                 <div class="col pl-5 pr-5">
                     <nav class="login-nav nav nav-tabs" role="tablist">
                         <a id="controlled-tab-tab-login" data-toggle="tab" href="#login-form" aria-selected="true"
-                            class="nav-item nav-link active">ĐĂNG NHẬP</a>
+                            class="nav-item nav-link active"><b>ĐĂNG NHẬP</b></a>
                         <a id="controlled-tab-tab-register" data-toggle="tab" href="#registration-form"
-                            aria-selected="false" class="nav-item nav-link">ĐĂNG KÝ</a>
+                            aria-selected="false" class="nav-item nav-link"><b>ĐĂNG KÝ</b></a>
                     </nav>
                     <div class="tab-content">
                         <div id="login-form" aria-labelledby="controlled-tab-tab-login" role="tabpanel"
@@ -110,12 +110,12 @@
                             <form id="login" action="">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label><b>Email</b></label>
                                     <input autocomplete="email" type="email" class="form-control" placeholder="Email"
                                         name="email" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mật khẩu</label>
+                                    <label><b>Mật khẩu</b></label>
                                     <div class="password-icon">
                                         <input type="password" autocomplete="current-password" id="password"
                                             class="form-control" placeholder="Mật khẩu" name="password" minlength="8"
@@ -163,17 +163,17 @@
                             <form id="signup" action="">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Họ và Tên</label><input autocomplete="given-name" class="form-control"
+                                    <label><b>Họ Tên</b></label><input autocomplete="given-name" class="form-control"
                                         placeholder="Nhập họ tên" minlength="2" name="name" required>
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label><input autocomplete="email" type="email" class="form-control"
+                                    <label><b>Email</b></label><input autocomplete="email" type="email" class="form-control"
                                         placeholder="Nhập email" name="email" required>
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Mật khẩu</label>
+                                    <label><b>Mật khẩu</b></label>
                                     <div class="password-icon">
                                         <input type="password" autocomplete="new-password" class="form-control"
                                             placeholder="Nhập mật khẩu" minlength="8" name="password" required>
@@ -182,7 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nhập lại mật khẩu</label>
+                                    <label><b>Nhập lại mật khẩu</b></label>
                                     <div class="password-icon">
                                         <input type="password" autocomplete="new-password" class="form-control"
                                             placeholder="Nhập lại mật khẩu" minlength="8"
@@ -209,10 +209,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md pl-0">
+                <div class="col-md pl-0">  
                     <div style=" height: 100%;">
                         <img alt=""
-                            src=" https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg"
+                            src="https://cf.shopee.vn/file/e84d48eafc224c442f61e35ad204b31d"
+                            {{-- https://i.pinimg.com/736x/e7/53/11/e753116b40521dd4f6c7b8e895dede87.jpg --}}
                             style="width: 100%;" />
                     </div>
                 </div>
