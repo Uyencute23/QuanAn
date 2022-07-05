@@ -34,8 +34,9 @@
 
     <section class="food_section layout_padding-bottom mt-5">
         <div class="container">
-            <div class="heading_container heading_center">
-                <h2>
+            <div class="heading_container heading_center .justify-content-between">
+                <h2 style="padding: 15px; border-radius: 5px;background-color: #222831;
+                color: #ffffff;">
                     THỰC ĐƠN
                 </h2>
             </div>

@@ -129,7 +129,7 @@
                     <div class="col">
                         <!--REVIEW ORDER-->
                         <div class="panel panel-info">
-                            <h3 class="text-center mb-3">THÔNG TIN SẢN PHẨM</h3>
+                           <h3 class="text-center mb-3 font-weight-bold">THÔNG TIN SẢN PHẨM</h3>
                             <hr>
                             <div class="panel-body">
                                 @foreach ($orderDetails as $detail)
