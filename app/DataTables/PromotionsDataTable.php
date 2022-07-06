@@ -91,12 +91,13 @@ class PromotionsDataTable extends DataTable
             Column::make('id')->addClass('text-center'),
             Column::make('name')->addClass('text-center')->title('Mã'),
             Column::make('precent')->addClass('text-center')->title('Phần trăm'),
-            Column::make('c_max_price')->addClass('text-center')->title('Giảm giá tối đa'),
+            Column::make('c_max_price')->addClass('text-center')->title('Giảm giá tối đa')->searchable(false),
             Column::make('subdescription')->title('Mô tả')->className('text-wrap min-w-1'),
             Column::make('start_time')->addClass('text-center')->title('Thời gian đầu'),
             Column::make('end_time')->addClass('text-center')->title('Thời gian kết thúc'),
             Column::make('created_at')->addClass('text-center')->title('Ngày tạo'),
             Column::make('updated_at')->addClass('text-center')->title('Ngày sửa'),
+            Column::make('max_price')->searchable(true)->visible(false)->title(''),
             Column::make('description')->searchable(true)->visible(false)->title(''),
         ];
     }
