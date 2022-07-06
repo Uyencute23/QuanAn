@@ -23,6 +23,7 @@ class PromotionsDataTableEditor extends DataTablesEditor
             'name'  => 'required',
             'precent' => 'required|numeric|min:1|max:100',
             'max_price' => 'required|numeric|min:1',
+            'description' => 'required|string|max:255',
         ];
     }
 
@@ -51,6 +52,7 @@ class PromotionsDataTableEditor extends DataTablesEditor
             'name'  => 'required',
             'precent' => 'required|numeric|min:1|max:100',
             'max_price' => 'required|numeric|min:1',
+            'description' => 'required|string|max:255',
         ];
     }
 
