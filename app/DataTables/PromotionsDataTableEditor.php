@@ -28,8 +28,15 @@ class PromotionsDataTableEditor extends DataTablesEditor
 
     public function creating(Model $model, array $data)
     {
-       $model->link ='';
-       return $data;
+        $model->link = '';
+        $model->description = '';
+        if (isset($data['link'])) {
+            $model->link = $data['link'];
+        }
+        if (isset($data['description'])) {
+            $model->description = $data['description'];
+        }
+        return $data;
     }
 
     /**
