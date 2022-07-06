@@ -26,9 +26,10 @@ class PromotionsDataTableEditor extends DataTablesEditor
         ];
     }
 
-    public function creating(Model $model)
+    public function creating(Model $model, array $data)
     {
        $model->link ='';
+       return $data;
     }
 
     /**
