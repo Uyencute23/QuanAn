@@ -87,6 +87,9 @@ div.dataTables_wrapper div.dataTables_length select {
 .max-w-1{
   max-width: 200px;
 }
+.min-w-1{
+  min-width: 200px;
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

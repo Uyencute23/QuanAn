@@ -21,7 +21,7 @@ return new class extends Migration
             $table->tinyInteger('precent');
             $table->float('max_price');
             $table->longText('description');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->timestamps();
 
         });

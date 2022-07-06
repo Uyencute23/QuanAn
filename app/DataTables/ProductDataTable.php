@@ -102,7 +102,7 @@ class ProductDataTable extends DataTable
             Column::make('subname')->title('Tên sản phẩm')->className('text-wrap max-w-1'),
             Column::make('pricef')->title('Đơn giá')->className('text-center'),
             Column::make('product_type')->title('Loại sản phẩm')->className('text-center'),
-            Column::make('subdescription')->title('Mô tả')->className('text-wrap max-w-1'),
+            Column::make('subdescription')->title('Mô tả')->className('text-wrap max-w-1 min-w-1'),
             Column::make('created_at')->title('Ngày tạo')->className('text-center'),
             Column::make('updated_at')->title('Ngày cập nhật')->className('text-center'),
             Column::make('name')->searchable(true)->visible(false)->title(''),
