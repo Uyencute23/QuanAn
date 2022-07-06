@@ -49,7 +49,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <input style="border-top-left-radius: 5px;border-bottom-left-radius: 5px" type="text"
-                            class="form-control" id="voucher" placeholder="Mã giảm giá" aria-label="Mã giảm giá"
+                            class="form-control" id="voucher" name="promo_id" placeholder="Mã giảm giá" aria-label="Mã giảm giá"
                             aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button style="border-top-right-radius: 5px;border-bottom-right-radius: 5px" onclick="apply()"

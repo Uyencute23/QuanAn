@@ -162,5 +162,13 @@ return [
         'title'                 => 'tiêu đề',
         'username'              => 'tên đăng nhập',
         'year'                  => 'năm',
+        'tel' => 'điện thoại',
+        'adress' => 'địa chỉ',
+        'user.name' => 'tên người dùng',
+        'user.email' => 'email người dùng',
+        'user.password' => 'mật khẩu người dùng',
+        'citizen_id' => 'CMND/CCCD',
+        'img'=>'ảnh',
     ],
+
 ];
