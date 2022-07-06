@@ -38,6 +38,11 @@ Route::get('/signup', function () {
     return view('pages.signup');
 })->name('signup');
 
+
+Route::get('/profile', function () {
+    return view('admin.pages.full-profile');
+})->name('profile');
+
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/about', function () {

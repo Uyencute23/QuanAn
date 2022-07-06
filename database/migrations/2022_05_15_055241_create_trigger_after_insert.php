@@ -27,7 +27,7 @@ return new class extends Migration
             AFTER INSERT ON users
             FOR EACH ROW 
             BEGIN
-                IF(NEW.role_id = 1)
+                IF(NEW.role_id = 1 OR NEW.role_id = 9)
                 THEN
                 INSERT INTO staff (user_id, created_at,updated_at) VALUES (NEW.id, NEW.created_at, NEW.updated_at);
                 END IF;
