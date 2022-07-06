@@ -10,10 +10,10 @@
                                 <h5 class="font-weight-bolder">
                                     {{ $totalRevenueDay }} VNĐ
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                     since yesterday
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -36,10 +36,10 @@
                                 <h5 class="font-weight-bolder">
                                     {{ $totalRevenueWeek }} VNĐ
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                                     since last week
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -62,10 +62,10 @@
                                     {{ $totalRevenueMonth }} VNĐ
 
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
                                     since last quarter
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
@@ -87,10 +87,10 @@
                                 <h5 class="font-weight-bolder">
                                     {{ $totalRevenueYear }} VNĐ
                                 </h5>
-                                <p class="mb-0">
+                                {{-- <p class="mb-0">
                                     <span class="text-success text-sm font-weight-bolder">+5%</span> than last
                                     month
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                         <div class="col-4 text-end">
