@@ -24,6 +24,11 @@ class PromotionsDataTableEditor extends DataTablesEditor
         ];
     }
 
+    public function creating(Model $model)
+    {
+       $model->link ='';
+    }
+
     /**
      * Get edit action validation rules.
      *
