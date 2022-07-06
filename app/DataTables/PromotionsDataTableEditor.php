@@ -20,7 +20,9 @@ class PromotionsDataTableEditor extends DataTablesEditor
     {
         return [
             // 'email' => 'required|email|unique:' . $this->resolveModel()->getTable(),
-            // 'name'  => 'required',
+            'name'  => 'required',
+            'precent' => 'required|numeric|min:1|max:100',
+            'max_price' => 'required|numeric|min:1',
         ];
     }
 
@@ -38,8 +40,9 @@ class PromotionsDataTableEditor extends DataTablesEditor
     public function editRules(Model $model)
     {
         return [
-            // 'email' => 'sometimes|required|email|' . Rule::unique($model->getTable())->ignore($model->getKey()),
-            // 'name'  => 'sometimes|required',
+            'name'  => 'required',
+            'precent' => 'required|numeric|min:1|max:100',
+            'max_price' => 'required|numeric|min:1',
         ];
     }
 
