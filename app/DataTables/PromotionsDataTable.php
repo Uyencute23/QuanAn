@@ -25,7 +25,7 @@ class PromotionsDataTable extends DataTable
             ->addColumn('subdescription', function ($product) {
                 return mb_strimwidth($product->description, 0, 120, "...");
             })
-            ->editColumn('max_price', function ($product) {
+            ->editColumn('c_max_price', function ($product) {
                 return number_format($product->max_price, 0, ',', '.').' đ';
             })  
             ->editColumn('created_at', function ($customer) {
@@ -91,7 +91,7 @@ class PromotionsDataTable extends DataTable
             Column::make('id')->addClass('text-center'),
             Column::make('name')->addClass('text-center')->title('Mã'),
             Column::make('precent')->addClass('text-center')->title('Phần trăm'),
-            Column::make('max_price')->addClass('text-center')->title('Giảm giá tối đa'),
+            Column::make('c_max_price')->addClass('text-center')->title('Giảm giá tối đa'),
             Column::make('subdescription')->title('Mô tả')->className('text-wrap min-w-1'),
             Column::make('start_time')->addClass('text-center')->title('Thời gian đầu'),
             Column::make('end_time')->addClass('text-center')->title('Thời gian kết thúc'),

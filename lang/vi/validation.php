@@ -167,8 +167,9 @@ return [
         'user.name' => 'tên người dùng',
         'user.email' => 'email người dùng',
         'user.password' => 'mật khẩu người dùng',
-        'citizen_id' => 'CMND/CCCD',
+        'precent' => 'phần trăm',
         'img'=>'ảnh',
+        'max_price'=>'giảm giá tối đa',
     ],
 
 ];
