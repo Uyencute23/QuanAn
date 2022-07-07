@@ -20,7 +20,8 @@ class CustomerDataTableEditor extends DataTablesEditor
     {
         return [
             // 'email' => 'required|email|unique:' . $this->resolveModel()->getTable(),
-            // 'name'  => 'required',
+            'phone'  => 'nullable|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/|max:11|min:10',
+            'name'  => 'required|string|max:255',
         ];
     }
 
@@ -35,6 +36,7 @@ class CustomerDataTableEditor extends DataTablesEditor
         return [
             // 'email' => 'sometimes|required|email|' . Rule::unique($model->getTable())->ignore($model->getKey()),
             'phone'  => 'nullable|regex:/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/|max:11|min:10',
+            'name'  => 'required|string|max:255',
         ];
     }
 

@@ -13,23 +13,24 @@ class CustomerController extends Controller
     public function index(CustomerDataTable $dataTable)
     {
         // dd(User::all());
-        $data =[
+        $data = [
             'title' => 'Quản lý khách hàng',
-            // 'type' => $type,
-            'active' => [2,3]
+
+            'active' => [2, 3]
         ];
-        return $dataTable->render('admin.pages.customer',$data);
-    }
-    //show all
-    public function showAll()
-    {
-        $customers = Customer::all();
-        return response()->json($customers);
+        return $dataTable->render('admin.pages.customer', $data);
     }
     public function store(CustomerDataTableEditor $editor)
     {
         return $editor->process(request());
     }
+    //show all
+    // public function showAll()
+    // {
+    //     $customers = Customer::all();
+    //     return response()->json($customers);
+    // }
+
     /**
      * Show the form for creating a new resource.
      *

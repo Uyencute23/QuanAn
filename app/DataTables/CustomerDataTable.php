@@ -20,14 +20,8 @@ class CustomerDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query->with('user'))
+            ->eloquent($query->with('user')) //LẤY TẤT CẢ CÁC THÔNG TIN CỦA KHÁCH HÀNG VỚI USER
             ->setRowId('id')
-            ->addColumn('name', function ($customer) {
-                return $customer->user->name;
-            })
-            ->addColumn('email', function ($customer) {
-                return $customer->user->email;
-            })
             ->addColumn('image', function ($customer) {
                 if ($customer->img) {
                     return '<img  src="' . $customer->img . '" width="100px" height="100px" style="object-fit: cover;">';
@@ -45,7 +39,7 @@ class CustomerDataTable extends DataTable
                     return $customer->updated_at->format('d/m/Y H:i:s');
                 }
             })
-            ->rawColumns(['image']);;
+            ->rawColumns(['image']);//CÓ THỂ THÊM CÁC CỘT MỚI VÀO DATATABLE
     }
 
     /**
